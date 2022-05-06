@@ -5,11 +5,11 @@ end
 
 gitsigns.setup {
   signs = {
-    add          = {hl = 'GitGutterAdd',    text = '│', numhl='GitSignsAddNr'},
-    change       = {hl = 'GitGutterChange', text = '│', numhl='GitSignsChangeNr'},
-    delete       = {hl = 'GitGutterDelete', text = '_', numhl='GitSignsDeleteNr'},
-    topdelete    = {hl = 'GitGutterDelete', text = '‾', numhl='GitSignsDeleteNr'},
-    changedelete = {hl = 'GitGutterChange', text = '~', numhl='GitSignsChangeNr'},
+    add          = { hl = "GitSignsAdd",    text = "▎", numhl = "GitSignsAddNr",    linehl = "GitSignsAddLn"    },
+    change       = { hl = "GitSignsChange", text = "▎", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
+    delete       = { hl = "GitSignsDelete", text = "契", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
+    topdelete    = { hl = "GitSignsDelete", text = "契", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
+    changedelete = { hl = "GitSignsChange", text = "▎", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
   },
   signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
   numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
@@ -29,7 +29,7 @@ gitsigns.setup {
     ['n <leader>ghp'] = '<cmd>lua require"gitsigns".preview_hunk()<CR>',
     ['n <leader>gm']  = '<cmd>lua require"gitsigns".blame_line{full=true}<CR>',
   },
-  watch_index = {
+  watch_gitdir = {
     interval = 700,
     follow_files = true
   },
@@ -55,7 +55,6 @@ gitsigns.setup {
     row = 0,
     col = 1
   },
-  use_internal_diff = true,  -- If vim.diff or luajit is present
   yadm = {
     enable = false
   },

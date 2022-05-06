@@ -23,7 +23,7 @@ if not packer_status_ok then
   if packer_status_ok then
     print "Packer cloned successfully."
   else
-    error("Couldn"t clone packer !\nPacker path: " .. packer_path .. "\n" .. packer)
+    error("Couldn't clone packer !\nPacker path: " .. packer_path .. "\n" .. packer)
     return
   end
 else
@@ -82,22 +82,26 @@ packer.startup(function(use)
 
   -- LSP
   use {
-    "neovim/nvim-lspconfig",                                  -- Enable LSP
-    "williamboman/nvim-lsp-installer",                        -- Simple to use language server installer
-    "tamago324/nlsp-settings.nvim",                           -- Language server settings defined in json
+    "neovim/nvim-lspconfig",                              -- Enable LSP
+    "williamboman/nvim-lsp-installer",                    -- Simple to use language server installer
+    "tamago324/nlsp-settings.nvim",                       -- Language server settings defined in json
+    "jose-elias-alvarez/null-ls.nvim",                    -- Formatters and linters
+    "tami5/lspsaga.nvim",                                  -- LSP saga
+    "simrat39/lsp-trouble.nvim",                          -- LSP trouble
   }
 
   -- Telescope
   use {
-    {
-      "nvim-telescope/telescope.nvim",
-      requires = {
-        "nvim-lua/popup.nvim",
-        "nvim-lua/plenary.nvim",
-        "nvim-telescope/telescope-fzf-native.nvim"
-      },
-      cmd = "Telescope",
-    },
+    "nvim-telescope/telescope.nvim",
+    -- {
+    --   "nvim-telescope/telescope.nvim",
+    --   requires = {
+    --     "nvim-lua/popup.nvim",
+    --     "nvim-lua/plenary.nvim",
+    --     "nvim-telescope/telescope-fzf-native.nvim"
+    --   },
+    --   cmd = "telescope",
+    -- },
     {
       "nvim-telescope/telescope-fzf-native.nvim",
       run = "make"
@@ -117,25 +121,23 @@ packer.startup(function(use)
       "SmiteshP/nvim-gps",
       -- after = "nvim-treesitter",
       requires = "nvim-treesitter/nvim-treesitter"
-    }
+    },
+    'JoosepAlviste/nvim-ts-context-commentstring'
   }
 
   -- Code
   use {
-    "mattn/emmet-vim" ,
-    "tpope/vim-repeat" ,                                      -- Fixes the repeat command "." for plugins
-    "tpope/vim-surround" ,                                    -- Surround with different characters
-    "junegunn/vim-easy-align" ,                               -- Aligns equals sings
-    "folke/todo-comments.nvim" ,                              -- Adds a todo comment
-    "AndrewRadev/splitjoin.vim" ,                             -- Converts onelines to multilines
-    "nacro90/numb.nvim" ,                                     -- Peek lines by :number
-    "alvan/vim-closetag" ,                                    -- Auto close xml/html tags
     "numToStr/Comment.nvim",
-    "norcalli/nvim-colorizer.lua" ,                          -- Color hex codes
-    "lukas-reineke/indent-blankline.nvim" ,                  -- Visualize indentation
+    "mattn/emmet-vim",
+    "lukas-reineke/indent-blankline.nvim",                   -- Visualize indentation
+    "AndrewRadev/splitjoin.vim",                             -- Converts onelines to multilines
+    "folke/todo-comments.nvim",                              -- Adds a todo comment
+    "norcalli/nvim-colorizer.lua",                           -- Color hex codes
+    "nacro90/numb.nvim",                                     -- Peek lines by :number
+    "folke/twilight.nvim",
     {
       "folke/zen-mode.nvim",
-      disable = true
+      disable = false
     },
     {
       "windwp/nvim-autopairs",
@@ -148,19 +150,16 @@ packer.startup(function(use)
 
   -- UI
   use {
-    { 
-      "glepnir/dashboard-nvim" ,
-      cmd = {
-        "Dashboard"
-      }
-    },
+    "glepnir/dashboard-nvim",
     "kyazdani42/nvim-tree.lua" ,
     "akinsho/nvim-bufferline.lua" ,
     "rcarriga/nvim-notify" ,
     {
       "hoob3rt/lualine.nvim",
-      after = "githu-nvim-theme",
-      requires = "nvim-gps"
+      requires = {
+         "nvim-gps",
+         "github-nvim-theme"
+      }
     },
   }
 
@@ -168,10 +167,7 @@ packer.startup(function(use)
   use {
     "TimUntersberger/neogit",
     -- "sindrets/diffview.nvim",
-    { "lewis6991/gitsigns.nvim",
-      requires = { "nvim-lua/plenary.nvim" },
-      event = "BufRead"
-    }
+    "lewis6991/gitsigns.nvim",
   }
 
 

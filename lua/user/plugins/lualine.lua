@@ -1,42 +1,3 @@
-local colorschemes = {
-	ayu_dark = {
-		black  = '#0f1419',
-		white  = '#e6e1cf',
-		grey   = '#3e4b59',
-		blue   = '#36a3d9',
-		red    = '#f07178',
-		orange = '#ffb454',
-		green  = '#b8cc52',
-		yellow = '#ffee99',
-		purple = '#a37acc',
-	},
-	onedark  = {
-		black  = '#282c34',
-		white  = '#abb2bf',
-		gray   = '#5c6370',
-		blue   = '#61afef',
-		red    = '#e06c75',
-		orange = '#d19a66',
-		green  = '#98c379',
-		yellow = '#e5c07b',
-		purple = '#c678dd',
-	},
-	tokyonight = {
-		black  = "#1f2335",
-		white  = "#FFFFFF",
-		gray   = "#565f89",
-		blue   = "#7aa2f7",
-		red    = "#f7768e",
-		orange = "#ff9e64",
-		green  = "#9ece6a",
-		yellow = "#e0af68",
-		purple = "#9d7cd8",
-	}
-}
-
-local current_colorscheme = "onedark"
-local colors = colorschemes[current_colorscheme]
-
 local lualine_status_ok, lualine = pcall(require, "lualine")
 if not lualine_status_ok then
   return
@@ -46,6 +7,8 @@ local gps_status_ok, gps = pcall(require, "nvim-gps")
 if not gps_status_ok then
   return
 end
+
+local colors = require("user.colors")
 
 lualine.setup {
 	options = {
@@ -66,7 +29,7 @@ lualine.setup {
 		},
 		lualine_c = {
 			{
-				gps.get_location, 
+				gps.get_location,
 				cond = gps.is_available
 			},
 			{
@@ -90,9 +53,9 @@ lualine.setup {
 		lualine_x = {
 			{
 				'diff',
-				color_added = colors.green,
-				color_modified = colors.orange,
-				color_removed = colors.red,
+				color_added = colors.git.add,
+				color_modified = colors.git.change,
+				color_removed = colors.git.delete,
 				symbols = {
 					added = ' ',
 					modified = '柳',

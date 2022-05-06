@@ -1,3 +1,13 @@
 node
 gcc
 unzip
+
+fzf
+
+pyright
+gopls
+
+black
+flake8
+prettier
+ansiblelint

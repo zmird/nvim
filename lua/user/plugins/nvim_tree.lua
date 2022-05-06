@@ -23,10 +23,10 @@ g.nvim_tree_icons = {
   symlink = "",
   git = {
       unstaged  = "",
-      staged    = "✓",
+      staged    = "S",
       unmerged  = "",
       renamed   = "➜",
-      untracked = "",
+      untracked = "U",
       deleted   = "",
       ignored   = "◌"
   },
@@ -150,6 +150,5 @@ vim.api.nvim_set_keymap('n', '<C-g>', "<cmd>lua require'nvim-tree'.toggle()<CR>"
 
 -- Highlight
 vim.cmd[[hi NvimTreeRootFolder guifg=bg guibg=bg]]
-
 vim.cmd[[hi NvimTreeFolderIcon guifg=#61AFEF]]
 vim.cmd[[highlight NvimTreeFolderName guifg=#61AFEF]]

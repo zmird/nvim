@@ -3,6 +3,11 @@ if not gps_status_ok then
   return
 end
 
+local treesitter_status_ok, _ = pcall(require, "nvim-treesitter.query")
+if not treesitter_status_ok then
+  return
+end
+
 gps.setup({
 	icons = {
 		["class-name"] = ' ',      -- Classes and class-like objects
