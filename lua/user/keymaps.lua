@@ -1,5 +1,8 @@
 local opts = { noremap = true, silent = true }
 
+vim.cmd [[noremap! <C-BS> <C-w>]] -- mapping for ctrl backspace
+vim.cmd [[noremap! <C-h> <C-w>]] -- mapping for ctrl backspace
+
 local keymap = vim.api.nvim_set_keymap
 
 keymap('n', '<C-j>', ':bprev<CR>', opts)     -- buffer previous
@@ -11,16 +14,8 @@ keymap('i', '<C-s>', '<Esc>:w<CR>i', opts)   -- save file in insert mode
 keymap('n', '<C-h>', ':noh<CR>', opts)       -- turn off highlighting
 keymap('t', '<Esc>', '<C-\\><C-n>', opts)    -- exit terminal mode
 
-vim.cmd [[noremap! <C-BS> <C-w>]] -- mapping for ctrl backspace
-vim.cmd [[noremap! <C-h> <C-w>]] -- mapping for ctrl backspace
-
--- Define packer commands
-vim.cmd "silent! command PackerClean lua require 'plugins' require('packer').clean()"
-vim.cmd "silent! command PackerCompile lua require 'plugins' require('packer').compile()"
-vim.cmd "silent! command PackerInstall lua require 'plugins' require('packer').install()"
-vim.cmd "silent! command PackerStatus lua require 'plugins' require('packer').status()"
-vim.cmd "silent! command PackerSync lua require 'plugins' require('packer').sync()"
-vim.cmd "silent! command PackerUpdate lua require 'plugins' require('packer').update()"
+-- NeoVim Tree
+keymap('n', '<C-g>', "<cmd>lua require'nvim-tree'.toggle()<CR>", opts)
 
 -- Telescope
 keymap("n", "<leader>ff", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
@@ -38,3 +33,19 @@ keymap('n', '<Leader>fq', '<cmd>Telescope git_stash<cr>', opts)
 
 keymap('n', '<Leader>fj', '<cmd>Telescope jump_list<cr>', opts)
 keymap('n', '<Leader>fz', '<cmd>Telescope current_buffer_fuzzy_find<cr>', opts)
+
+-- Dashboard
+keymap('n', '<Leader>ss', ':<C-u>SessionSave<CR>', opts)
+keymap('n', '<Leader>sl', ':<C-u>SessionLoad<CR>', opts)
+keymap('n', '<Leader>fc', ':e ~/.config/nvim/init.lua<CR>', opts) -- edit conf
+
+-- Neogit
+keymap('n', '<leader>hn', '<CMD>Neogit<CR>', opts)
+
+-- Packer
+vim.cmd "silent! command PackerClean lua require 'plugins' require('packer').clean()"
+vim.cmd "silent! command PackerCompile lua require 'plugins' require('packer').compile()"
+vim.cmd "silent! command PackerInstall lua require 'plugins' require('packer').install()"
+vim.cmd "silent! command PackerStatus lua require 'plugins' require('packer').status()"
+vim.cmd "silent! command PackerSync lua require 'plugins' require('packer').sync()"
+vim.cmd "silent! command PackerUpdate lua require 'plugins' require('packer').update()"

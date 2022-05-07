@@ -5,16 +5,13 @@ end
 
 telescope.load_extension("fzf")
 telescope.load_extension('project')
--- telescope.load_extension('themes')
--- telescope.load_extension('media_files')
+telescope.load_extension("ui-select")
 
 local actions = require "telescope.actions"
 
 telescope.setup {
   defaults = {
     prompt_prefix = "   ",
-    -- prompt_prefix = "    ",
-    -- prompt_prefix = " ",
     selection_caret = "  ",
     entry_prefix = "  ",
     initial_mode = "insert",

@@ -1,9 +1,28 @@
-local utils = require("user.utils")
-local colors = require("user.colors")
+local utils_status_ok, utils = pcall(require, "user.utils")
+if not utils_status_ok then
+  return
+end
+
+local colors_status_ok, colors = pcall(require, "user.colors")
+if not colors_status_ok then
+  return
+end
+
+if not colors.loaded then
+  return
+end
+
+vim.cmd[[set termguicolors]]
 
 local fg = utils.fg
 local bg = utils.bg
 local fg_bg = utils.fg_bg
+
+-- NeoVim Tree
+fg("NvimTreeFolderIcon", colors.blue)
+-- vim.cmd[[hi NvimTreeRootFolder guifg=bg guibg=bg]]
+-- vim.cmd[[hi NvimTreeFolderIcon guifg=#61AFEF]]
+-- vim.cmd[[highlight NvimTreeFolderName guifg=#61AFEF]]
 
 -- Telescope
 
@@ -24,3 +43,10 @@ fg_bg("TelescopePromptPrefix", colors.blue, colors.bg_highlight)
 fg_bg("TelescopePromptCounter", colors.fg_dark, colors.bg_highlight)
 
 bg("TelescopeSelection", colors.bg_visual_selection)
+
+-- Dashboard
+
+fg("DashboardHeader", colors.bright_black)
+fg("DashboardCenter", colors.bright_black)
+fg("DashboardShortcut", colors.bright_black)
+-- fg("DashboardFooter" .. colors.bright_black)

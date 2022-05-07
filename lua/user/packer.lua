@@ -93,20 +93,12 @@ packer.startup(function(use)
   -- Telescope
   use {
     "nvim-telescope/telescope.nvim",
-    -- {
-    --   "nvim-telescope/telescope.nvim",
-    --   requires = {
-    --     "nvim-lua/popup.nvim",
-    --     "nvim-lua/plenary.nvim",
-    --     "nvim-telescope/telescope-fzf-native.nvim"
-    --   },
-    --   cmd = "telescope",
-    -- },
     {
       "nvim-telescope/telescope-fzf-native.nvim",
       run = "make"
     },
     "nvim-telescope/telescope-project.nvim",
+    "nvim-telescope/telescope-ui-select.nvim",
   }
 
   -- Treesitter
@@ -174,16 +166,12 @@ packer.startup(function(use)
   -- Others
   use {
     "antoinemadec/FixCursorHold.nvim",                          -- Needed while issue https://github.com/neovim/neovim/issues/12587 is still open
+    "mrjones2014/legendary.nvim",
     -- use { "akinsho/nvim-toggleterm.lua" }
-    {
-      "folke/which-key.nvim",
-      event = "BufWinEnter"
-    },
-    {
-      "vuki656/package-info.nvim",
-      disable = false
-    }                                                           -- Packages info in packages.json files
-
+    -- {
+    --   "folke/which-key.nvim",
+    --   event = "BufWinEnter"
+    -- },
   }
 
   if packer_bootstrap then

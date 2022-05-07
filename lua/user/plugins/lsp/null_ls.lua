@@ -20,7 +20,7 @@ null_ls.setup {
     diagnostics.flake8,
     
     -- Code actions
-  code_actions.gitsigns,
-  code_actions.gitrebase,
+    code_actions.gitsigns,
+    code_actions.gitrebase,
   },
 }

@@ -145,10 +145,3 @@ tree.setup {
 }
 
 vim.cmd[[autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif]]
-
-vim.api.nvim_set_keymap('n', '<C-g>', "<cmd>lua require'nvim-tree'.toggle()<CR>", { noremap = true, silent = true})
-
--- Highlight
-vim.cmd[[hi NvimTreeRootFolder guifg=bg guibg=bg]]
-vim.cmd[[hi NvimTreeFolderIcon guifg=#61AFEF]]
-vim.cmd[[highlight NvimTreeFolderName guifg=#61AFEF]]
