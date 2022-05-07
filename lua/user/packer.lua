@@ -142,10 +142,18 @@ packer.startup(function(use)
 
   -- UI
   use {
-    "glepnir/dashboard-nvim",
-    "kyazdani42/nvim-tree.lua" ,
-    "akinsho/nvim-bufferline.lua" ,
-    "rcarriga/nvim-notify" ,
+    "goolord/alpha-nvim",
+    -- "kyazdani42/nvim-tree.lua",
+    "akinsho/nvim-bufferline.lua",
+    "rcarriga/nvim-notify",
+    {
+      "nvim-neo-tree/neo-tree.nvim",
+        branch = "v2.x",
+        requires = { 
+          "nvim-lua/plenary.nvim",
+          "MunifTanjim/nui.nvim",
+        }
+      },
     {
       "hoob3rt/lualine.nvim",
       requires = {
@@ -157,7 +165,6 @@ packer.startup(function(use)
 
   -- Git
   use {
-    "TimUntersberger/neogit",
     -- "sindrets/diffview.nvim",
     "lewis6991/gitsigns.nvim",
   }

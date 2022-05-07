@@ -1,6 +1,5 @@
 local legendary_status_ok, legendary = pcall(require, "legendary")
 if not legendary_status_ok then
-  print("legendary not loaded")
   return
 end
 
@@ -63,3 +62,12 @@ legendary.setup({
     display_results = 'float',
   },
 })
+
+-- -- search keymaps, commands, and autocmds
+-- legendary.find()
+-- -- search keymaps
+-- legendary.find('keymaps')
+-- -- search commands
+-- legendary.find('commands')
+-- -- search autocmds
+-- legendary.find('autocmds')

@@ -3,14 +3,19 @@ if not bufferline_status_ok then
   return
 end
 
+local icons_status_ok, icons = pcall(require, "user.icons")
+if not icons_status_ok then
+  return
+end
+
 bufferline.setup{
 	options = {
-		offsets = {{filetype = "NvimTree", text = "", padding = 1}},
-		buffer_close_icon = "",
-		modified_icon = "",
-		close_icon = "",
-		left_trunc_marker = "",
-		right_trunc_marker = "",
+		offsets = {{filetype = "neo-tree", text = "", padding = 1}},
+		buffer_close_icon = icons.cross,
+		modified_icon = icons.dot,
+		close_icon = icons.error,
+		left_trunc_marker = icons.arrowLeftCircle,
+		right_trunc_marker = icons.arrowRightCircle,
 		max_name_length = 14,
 		max_prefix_length = 13,
 		tab_size = 20,

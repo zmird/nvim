@@ -15,7 +15,10 @@ keymap('n', '<C-h>', ':noh<CR>', opts)       -- turn off highlighting
 keymap('t', '<Esc>', '<C-\\><C-n>', opts)    -- exit terminal mode
 
 -- NeoVim Tree
-keymap('n', '<C-g>', "<cmd>lua require'nvim-tree'.toggle()<CR>", opts)
+-- keymap('n', '<C-g>', "<cmd>lua require'nvim-tree'.toggle()<CR>", opts)
+
+-- NeoTree
+keymap('n', '<C-g>', "<cmd>Neotree toggle<cr>", opts)
 
 -- Telescope
 keymap("n", "<leader>ff", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)

@@ -6,12 +6,16 @@ end
 local tree_cb = require("nvim-tree.config").nvim_tree_callback
 local g = vim.g
 
-g.nvim_tree_respect_buf_cwd = 1
-g.nvim_tree_add_trailing = 0 -- append a trailing slash to folder names
-g.nvim_tree_git_hl = 0
-g.nvim_tree_highlight_opened_files = 0
+g.nvim_tree_git_hl = 1                    -- 0 by default, will enable file highlight for git attributes (can be used without the icons).
+g.nvim_tree_highlight_opened_files = 0    -- 0 by default, will enable folder and file icon highlight for opened files/directories.
+g.nvim_tree_root_folder_modifier = ':~'   -- This is the default. See :help filename-modifiers for more options
+g.nvim_tree_add_trailing = 0              -- 0 by default, append a trailing slash to folder names
+g.nvim_tree_group_empty = 1               -- 0 by default, compact folders that only contain a single folder into one node in the file tree
+g.nvim_tree_icon_padding = ' '            -- one space by default, used for rendering the space between the icon and the filename. Use with caution, it could break rendering if you set an empty string depending on your font.
+g.nvim_tree_symlink_arrow = ' >> '        -- defaults to ' ➛ '. used as a separator between symlinks' source and target.
+g.nvim_tree_respect_buf_cwd = 0           -- 0 by default, will change cwd of nvim-tree to that of new buffer's when opening nvim-tree.
+g.nvim_tree_create_in_closed_folder = 1   -- 0 by default, When creating files, sets the path of a file when cursor is on a closed folder to the parent folder when 0, and inside the folder when 1.
 -- g.nvim_tree_root_folder_modifier = table.concat { ":t:gs?$?/..", string.rep(" ", 1000), "?:gs?^??" }
-g.nvim_tree_icon_padding = ' '
 g.nvim_tree_show_icons = {
   git           = 1,
   folders       = 1,
@@ -68,7 +72,7 @@ tree.setup {
     height = 30,
     hide_root_folder = true,
     side = "left",
-    preserve_window_proportions = false,
+    preserve_window_proportions = true,
     number = false,
     relativenumber = false,
     signcolumn = "yes",
@@ -136,7 +140,7 @@ tree.setup {
       window_picker = {
         enable = true,
         exclude = {
-          filetype = { "notify", "packer", "qf", "dashboard" },
+          filetype = { "notify", "packer", "qf", "dashboard", "alpha" },
           buftype = { "terminal" },
         }
       }

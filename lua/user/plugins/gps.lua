@@ -8,11 +8,16 @@ if not treesitter_status_ok then
   return
 end
 
+local icons_status_ok, icons = pcall(require, "user.icons")
+if not icons_status_ok then
+  return
+end
+
 gps.setup({
 	icons = {
-		["class-name"] = ' ',      -- Classes and class-like objects
-		["function-name"] = ' ',   -- Functions
-		["method-name"] = ' '      -- Methods (functions inside class-like objects)
+		["class-name"] = icons.treeDiagram .. ' ',    -- Classes and class-like objects
+		["function-name"] = icons.f .. ' ',   				-- Functions
+		["method-name"] = icons.container .. ' '      -- Methods (functions inside class-like objects)
 	},
 	-- Disable any languages individually over here
 	-- Any language not disabled here is enabled by default
