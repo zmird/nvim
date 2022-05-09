@@ -3,7 +3,7 @@ if not status_ok then
   return
 end
 
-telescope.load_extension("fzf")
+-- telescope.load_extension("fzf")
 telescope.load_extension('project')
 telescope.load_extension("ui-select")
 

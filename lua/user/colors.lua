@@ -48,6 +48,7 @@ M.git = {
 }
 
 -- Generic Colors
+M.orange                = "#d18616"
 M.black                 = github_colors.black
 M.bright_black          = github_colors.bright_black
 M.white                 = github_colors.white

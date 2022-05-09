@@ -50,8 +50,7 @@ packer.startup(function(use)
 
   -- Needed to load first
   use {
-    -- { "lewis6991/impatient.nvim",
-    --   rocks = "mpack" },
+    "lewis6991/impatient.nvim",
     "nvim-lua/popup.nvim",
     "nvim-lua/plenary.nvim",
     "nathom/filetype.nvim",
@@ -69,9 +68,10 @@ packer.startup(function(use)
     "hrsh7th/cmp-buffer",                                 -- Buffer completions
     "hrsh7th/cmp-path",                                   -- Path completions
     "hrsh7th/cmp-cmdline",                                -- Cmdline completions
-    "saadparwaiz1/cmp_luasnip",                           -- Snippet completions
     "hrsh7th/cmp-nvim-lsp",                               -- LSP completions
     "hrsh7th/cmp-nvim-lua",                               -- Lua completions
+    "hrsh7th/cmp-nvim-lsp-signature-help",                -- LSP signature help
+    "saadparwaiz1/cmp_luasnip",                           -- Snippet completions
   }
 
   -- Snippets
@@ -84,21 +84,39 @@ packer.startup(function(use)
   use {
     "neovim/nvim-lspconfig",                              -- Enable LSP
     "williamboman/nvim-lsp-installer",                    -- Simple to use language server installer
-    "tamago324/nlsp-settings.nvim",                       -- Language server settings defined in json
+    -- "tamago324/nlsp-settings.nvim",                       -- Language server settings defined in json
     "jose-elias-alvarez/null-ls.nvim",                    -- Formatters and linters
-    "tami5/lspsaga.nvim",                                  -- LSP saga
-    "simrat39/lsp-trouble.nvim",                          -- LSP trouble
+    "tami5/lspsaga.nvim",                                 -- LSP saga
+    "folke/lsp-trouble.nvim",                             -- LSP trouble
   }
 
   -- Telescope
   use {
-    "nvim-telescope/telescope.nvim",
+    {
+      "nvim-telescope/telescope.nvim",
+      cmd = "Telescope",
+      after = {
+        "telescope-fzf-native.nvim",
+        "telescope-project.nvim",
+        "telescope-ui-select.nvim",
+      },
+      config = function ()
+        require "user.plugins.telescope"
+      end,
+    },
     {
       "nvim-telescope/telescope-fzf-native.nvim",
-      run = "make"
+      run = "make",
+      cmd = "Telescope",
     },
-    "nvim-telescope/telescope-project.nvim",
-    "nvim-telescope/telescope-ui-select.nvim",
+    {
+      "nvim-telescope/telescope-project.nvim",
+      cmd = "Telescope",
+    },
+    {
+      "nvim-telescope/telescope-ui-select.nvim",
+      cmd = "Telescope",
+    },
   }
 
   -- Treesitter
@@ -107,11 +125,14 @@ packer.startup(function(use)
       "nvim-treesitter/nvim-treesitter",
       run = function ()
         pcall(vim.cmd, ":TSUpdate")
-      end
+      end,
+      -- event = { "BufRead", "BufNewFile" },
+      config = function ()
+        require "user.plugins.treesitter"
+      end,
     },
     {
       "SmiteshP/nvim-gps",
-      -- after = "nvim-treesitter",
       requires = "nvim-treesitter/nvim-treesitter"
     },
     'JoosepAlviste/nvim-ts-context-commentstring'
@@ -119,17 +140,54 @@ packer.startup(function(use)
 
   -- Code
   use {
-    "numToStr/Comment.nvim",
-    "mattn/emmet-vim",
-    "lukas-reineke/indent-blankline.nvim",                   -- Visualize indentation
-    "AndrewRadev/splitjoin.vim",                             -- Converts onelines to multilines
-    "folke/todo-comments.nvim",                              -- Adds a todo comment
-    "norcalli/nvim-colorizer.lua",                           -- Color hex codes
     "nacro90/numb.nvim",                                     -- Peek lines by :number
-    "folke/twilight.nvim",
+    {
+      "folke/todo-comments.nvim",                              -- Adds a todo comment
+      event = "BufRead",
+    },
+    {
+      "folke/twilight.nvim",
+      cmd = "ZenMode",
+      config = function ()
+        require "user.plugins.twilight"
+      end,
+    },
+    {
+      "norcalli/nvim-colorizer.lua",                           -- Color hex codes
+      event = "BufRead",
+      config = function ()
+        require "user.plugins.colorizer"
+      end,
+    },
+    {
+      "AndrewRadev/splitjoin.vim",                             -- Converts onelines to multilines
+      event = "BufRead",
+    },
+    {
+      "numToStr/Comment.nvim",
+      event = "BufRead",
+      config = function ()
+        require "user.plugins.comment"
+      end
+    },
+    {
+      "lukas-reineke/indent-blankline.nvim",
+      event = "BufRead",
+      config = function ()
+        require("user.plugins.indent")
+      end
+    },
+    { 
+      "mattn/emmet-vim",
+      event = "BufRead",
+    },
     {
       "folke/zen-mode.nvim",
-      disable = false
+      disable = false,
+      cmd = "ZenMode",
+      config = function ()
+        require "user.plugins.zen_mode"
+      end,
     },
     {
       "windwp/nvim-autopairs",
@@ -143,19 +201,17 @@ packer.startup(function(use)
   -- UI
   use {
     "goolord/alpha-nvim",
-    -- "kyazdani42/nvim-tree.lua",
     "akinsho/nvim-bufferline.lua",
-    "rcarriga/nvim-notify",
     {
-      "nvim-neo-tree/neo-tree.nvim",
-        branch = "v2.x",
-        requires = { 
-          "nvim-lua/plenary.nvim",
-          "MunifTanjim/nui.nvim",
-        }
-      },
+      "kyazdani42/nvim-tree.lua",
+      cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+      config = function ()
+        require "user.plugins.nvim_tree"
+      end,
+    },
     {
       "hoob3rt/lualine.nvim",
+      -- disable = true,
       requires = {
          "nvim-gps",
          "github-nvim-theme"
@@ -166,19 +222,26 @@ packer.startup(function(use)
   -- Git
   use {
     -- "sindrets/diffview.nvim",
-    "lewis6991/gitsigns.nvim",
+    -- {
+      "lewis6991/gitsigns.nvim",
+      event = "BufRead",
+      config = function ()
+        require("user.plugins.gitsigns")
+      end
+    -- }
   }
 
 
   -- Others
   use {
     "antoinemadec/FixCursorHold.nvim",                          -- Needed while issue https://github.com/neovim/neovim/issues/12587 is still open
-    "mrjones2014/legendary.nvim",
-    -- use { "akinsho/nvim-toggleterm.lua" }
-    -- {
-    --   "folke/which-key.nvim",
-    --   event = "BufWinEnter"
-    -- },
+    {
+      "mrjones2014/legendary.nvim",
+      cmd = "Legendary",
+      config = function ()
+        require "user.plugins.legendary" 
+      end,
+    },
   }
 
   if packer_bootstrap then

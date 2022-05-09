@@ -29,7 +29,6 @@ fg("NvimTreeFolderIcon", colors.blue)
 fg_bg("TelescopeBorder", colors.bg2, colors.bg2)
 fg_bg("TelescopePromptBorder", colors.bg_highlight, colors.bg_highlight)
 
-
 bg("TelescopeNormal", colors.bg2)
 fg_bg("TelescopePromptNormal", colors.fg, colors.bg_highlight)
 fg_bg("TelescopeResultsNormal", colors.fg, colors.bg2)
@@ -44,9 +43,22 @@ fg_bg("TelescopePromptCounter", colors.fg_dark, colors.bg_highlight)
 
 bg("TelescopeSelection", colors.bg_visual_selection)
 
--- Dashboard
-
-fg("DashboardHeader", colors.bright_black)
-fg("DashboardCenter", colors.bright_black)
-fg("DashboardShortcut", colors.bright_black)
--- fg("DashboardFooter" .. colors.bright_black)
+-- Cmp
+-- fg("CmpItemKindText", colors.orange)
+-- fg("CmpItemKindMethod", colors.blue)
+-- fg("CmpItemKindFunction", colors.blue)
+-- fg("CmpItemKindConstructor", colors.yellow)
+-- fg("CmpItemKindField", colors.blue)
+-- fg("CmpItemKindClass", colors.yellow)
+-- fg("CmpItemKindInterface", colors.orange)
+-- fg("CmpItemKindModule", colors.orange)
+-- fg("CmpItemKindProperty", colors.orange)
+-- fg("CmpItemKindValue", colors.orange)
+-- fg("CmpItemKindEnum", colors.orange)
+-- fg("CmpItemKindKeyword", colors.orange)
+-- fg("CmpItemKindSnippet", colors.orange)
+-- fg("CmpItemKindFile", colors.orange)
+-- fg("CmpItemKindEnumMember", colors.orange)
+-- fg("CmpItemKindConstant", colors.orange)
+-- fg("CmpItemKindStruct", colors.orange)
+-- fg("CmpItemKindTypeParameter", colors.orange)

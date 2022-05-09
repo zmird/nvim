@@ -10,7 +10,7 @@ end
 
 bufferline.setup{
 	options = {
-		offsets = {{filetype = "neo-tree", text = "", padding = 1}},
+		offsets = {{filetype = "NvimTree", text = "", padding = 1}},
 		buffer_close_icon = icons.cross,
 		modified_icon = icons.dot,
 		close_icon = icons.error,
@@ -24,6 +24,8 @@ bufferline.setup{
 		view = "multiwindow",
 		show_buffer_close_icons = true,
 		separator_style = "thin",
+		diagnostics = false,
+		diagnostics_update_in_insert = false,
 		-- mappings = "true"
 	}
 }
