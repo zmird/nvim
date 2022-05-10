@@ -1,7 +1,9 @@
 local opts = { noremap = true, silent = true }
 
-vim.cmd [[noremap! <C-BS> <C-w>]] -- mapping for ctrl backspace
-vim.cmd [[noremap! <C-h> <C-w>]] -- mapping for ctrl backspace
+vim.cmd [[noremap! <C-BS> <C-w>]]            -- mapping for ctrl backspace
+vim.cmd [[noremap! <C-h> <C-w>]]             -- mapping for ctrl backspace
+vim.cmd [[tnoremap <Esc> <C-\><C-n>]]
+vim.cmd [[tnoremap <C-v><Esc> <Esc>]]
 
 local keymap = vim.api.nvim_set_keymap
 
@@ -36,6 +38,10 @@ keymap('n', '<Leader>fq', '<cmd>Telescope git_stash<cr>', opts)
 
 keymap('n', '<Leader>fj', '<cmd>Telescope jump_list<cr>', opts)
 keymap('n', '<Leader>fz', '<cmd>Telescope current_buffer_fuzzy_find<cr>', opts)
+
+-- Comment
+keymap("n", "<C-_>", "<cmd>lua require('Comment.api').toggle_current_linewise()<cr>", opts)
+keymap("x", "<C-_>", "<esc><cmd>lua require('Comment.api').toggle_current_linewise_op(vim.fn.visualmode())<cr>", opts)
 
 -- Dashboard
 keymap('n', '<Leader>ss', ':<C-u>SessionSave<CR>', opts)

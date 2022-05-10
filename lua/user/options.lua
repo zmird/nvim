@@ -96,11 +96,3 @@ vim.cmd [[let &t_EI = "\e[2 q"]]
 
 -- Remove tildes at the end of buffer
 vim.cmd [[let &fcs='eob: ']]
-
--- Return to the closed position when reopening
-vim.cmd [[ au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif]]
-
--- Hightlighting
-vim.cmd [[hi Cursor gui=reverse guibg=NONE guifg=NONE]]
-vim.cmd [[hi CursorLine term=bold cterm=bold guibg=grey]]
-vim.cmd [[hi LineNr ctermfg=DarkGrey]]

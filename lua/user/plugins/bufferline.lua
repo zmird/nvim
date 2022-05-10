@@ -26,6 +26,7 @@ bufferline.setup{
 		separator_style = "thin",
 		diagnostics = false,
 		diagnostics_update_in_insert = false,
+		diagnostics_indicator = false,
 		-- mappings = "true"
 	}
 }

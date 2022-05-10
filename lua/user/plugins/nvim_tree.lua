@@ -68,7 +68,7 @@ tree.setup {
   sort_by = "name",
   update_cwd = true,
   view = {
-    width = 25,
+    width = 32,
     height = 30,
     hide_root_folder = true,
     side = "left",

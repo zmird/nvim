@@ -18,6 +18,9 @@ local fg = utils.fg
 local bg = utils.bg
 local fg_bg = utils.fg_bg
 
+-- Hightlighting
+-- vim.cmd [[hi Cursor gui=reverse guibg=NONE guifg=NONE]]
+
 -- NeoVim Tree
 fg("NvimTreeFolderIcon", colors.blue)
 -- vim.cmd[[hi NvimTreeRootFolder guifg=bg guibg=bg]]

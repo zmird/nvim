@@ -3,9 +3,9 @@ if not status_ok then
   return
 end
 
--- telescope.load_extension("fzf")
-telescope.load_extension('project')
-telescope.load_extension("ui-select")
+telescope.load_extension("fzf")
+telescope.load_extension("project")
+telescope.load_extension("lazygit")
 
 local actions = require "telescope.actions"
 
@@ -140,11 +140,5 @@ telescope.setup {
       --     -- '~/Workspace/Cineca/gitlab.cineca.it/',
       --   }
       -- },
-      -- media_files = {
-      --   -- filetypes whitelist
-      --   -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
-      --   filetypes = {"png", "webp", "jpg", "jpeg"},
-      --   find_cmd = "rg" -- find command (defaults to `fd`)
-      -- }
   },
 }

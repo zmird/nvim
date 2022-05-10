@@ -98,7 +98,6 @@ packer.startup(function(use)
       after = {
         "telescope-fzf-native.nvim",
         "telescope-project.nvim",
-        "telescope-ui-select.nvim",
       },
       config = function ()
         require "user.plugins.telescope"
@@ -113,10 +112,6 @@ packer.startup(function(use)
       "nvim-telescope/telescope-project.nvim",
       cmd = "Telescope",
     },
-    {
-      "nvim-telescope/telescope-ui-select.nvim",
-      cmd = "Telescope",
-    },
   }
 
   -- Treesitter
@@ -127,9 +122,9 @@ packer.startup(function(use)
         pcall(vim.cmd, ":TSUpdate")
       end,
       -- event = { "BufRead", "BufNewFile" },
-      config = function ()
-        require "user.plugins.treesitter"
-      end,
+      -- config = function ()
+      --   require "user.plugins.treesitter"
+      -- end,
     },
     {
       "SmiteshP/nvim-gps",
@@ -165,7 +160,7 @@ packer.startup(function(use)
     },
     {
       "numToStr/Comment.nvim",
-      event = "BufRead",
+      -- event = "BufRead",
       config = function ()
         require "user.plugins.comment"
       end
@@ -222,13 +217,17 @@ packer.startup(function(use)
   -- Git
   use {
     -- "sindrets/diffview.nvim",
-    -- {
+    {
+      "kdheepak/lazygit.nvim",
+      cmd = "LazyGit",
+    },
+    {
       "lewis6991/gitsigns.nvim",
       event = "BufRead",
       config = function ()
-        require("user.plugins.gitsigns")
+        require "user.plugins.gitsigns"
       end
-    -- }
+    },
   }
 
 
