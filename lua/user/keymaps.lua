@@ -23,7 +23,7 @@ keymap('n', '<C-g>', "<cmd>NvimTreeToggle<CR>", opts)
 -- keymap('n', '<C-g>', "<cmd>Neotree toggle<cr>", opts)
 
 -- Telescope
-keymap("n", "<leader>ff", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
+keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts)
 keymap('n', '<Leader>fo', '<cmd>Telescope oldfiles<cr>', opts)
 keymap('n', '<Leader>fm', '<cmd>Telescope marks<cr>', opts)
 keymap('n', '<Leader>fp', '<cmd>Telescope project<cr>', opts)
@@ -43,13 +43,8 @@ keymap('n', '<Leader>fz', '<cmd>Telescope current_buffer_fuzzy_find<cr>', opts)
 keymap("n", "<C-_>", "<cmd>lua require('Comment.api').toggle_current_linewise()<cr>", opts)
 keymap("x", "<C-_>", "<esc><cmd>lua require('Comment.api').toggle_current_linewise_op(vim.fn.visualmode())<cr>", opts)
 
--- Dashboard
-keymap('n', '<Leader>ss', ':<C-u>SessionSave<CR>', opts)
-keymap('n', '<Leader>sl', ':<C-u>SessionLoad<CR>', opts)
-keymap('n', '<Leader>fc', ':e ~/.config/nvim/init.lua<CR>', opts) -- edit conf
-
--- Neogit
-keymap('n', '<leader>hn', '<CMD>Neogit<CR>', opts)
+-- Toggleterm
+keymap("n", "<Leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<cr>", opts)
 
 -- Packer
 vim.cmd "silent! command PackerClean lua require 'plugins' require('packer').clean()"

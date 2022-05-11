@@ -5,7 +5,6 @@ end
 
 telescope.load_extension("fzf")
 telescope.load_extension("project")
-telescope.load_extension("lazygit")
 
 local actions = require "telescope.actions"
 

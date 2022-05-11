@@ -197,6 +197,7 @@ packer.startup(function(use)
   use {
     "goolord/alpha-nvim",
     "akinsho/nvim-bufferline.lua",
+      "akinsho/toggleterm.nvim",
     {
       "kyazdani42/nvim-tree.lua",
       cmd = { "NvimTreeToggle", "NvimTreeFocus" },
@@ -217,17 +218,13 @@ packer.startup(function(use)
   -- Git
   use {
     -- "sindrets/diffview.nvim",
-    {
-      "kdheepak/lazygit.nvim",
-      cmd = "LazyGit",
-    },
-    {
+    -- {
       "lewis6991/gitsigns.nvim",
       event = "BufRead",
       config = function ()
         require "user.plugins.gitsigns"
       end
-    },
+    -- },
   }
 
 
