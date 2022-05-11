@@ -16,11 +16,8 @@ keymap('i', '<C-s>', '<Esc>:w<CR>i', opts)   -- save file in insert mode
 keymap('n', '<C-h>', ':noh<CR>', opts)       -- turn off highlighting
 keymap('t', '<Esc>', '<C-\\><C-n>', opts)    -- exit terminal mode
 
--- NeoVim Tree
-keymap('n', '<C-g>', "<cmd>NvimTreeToggle<CR>", opts)
-
 -- NeoTree
--- keymap('n', '<C-g>', "<cmd>Neotree toggle<cr>", opts)
+keymap('n', '<C-g>', "<cmd>Neotree toggle<cr>", opts)
 
 -- Telescope
 keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts)

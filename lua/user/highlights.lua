@@ -22,10 +22,7 @@ local fg_bg = utils.fg_bg
 -- vim.cmd [[hi Cursor gui=reverse guibg=NONE guifg=NONE]]
 
 -- NeoVim Tree
-fg("NvimTreeFolderIcon", colors.blue)
--- vim.cmd[[hi NvimTreeRootFolder guifg=bg guibg=bg]]
--- vim.cmd[[hi NvimTreeFolderIcon guifg=#61AFEF]]
--- vim.cmd[[highlight NvimTreeFolderName guifg=#61AFEF]]
+-- fg("NvimTreeFolderIcon", colors.blue)
 
 -- Telescope
 

@@ -197,13 +197,13 @@ packer.startup(function(use)
   use {
     "goolord/alpha-nvim",
     "akinsho/nvim-bufferline.lua",
-      "akinsho/toggleterm.nvim",
+    "akinsho/toggleterm.nvim",
     {
-      "kyazdani42/nvim-tree.lua",
-      cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-      config = function ()
-        require "user.plugins.nvim_tree"
-      end,
+      "nvim-neo-tree/neo-tree.nvim",
+      branch = "v2.x",
+      requires = {
+        "MunifTanjim/nui.nvim",
+      }
     },
     {
       "hoob3rt/lualine.nvim",

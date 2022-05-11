@@ -10,7 +10,7 @@ end
 
 bufferline.setup{
 	options = {
-		offsets = {{filetype = "NvimTree", text = "", padding = 1}},
+		offsets = {{filetype = "neo-tree", text = "", padding = 1}},
 		buffer_close_icon = icons.cross,
 		modified_icon = icons.dot,
 		close_icon = icons.error,
