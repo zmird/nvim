@@ -8,6 +8,11 @@ if not icons_status_ok then
   return
 end
 
+local utils_status_ok, utils = pcall(require, "user.utils")
+if not utils_status_ok then
+  return
+end
+
 
 vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 
@@ -284,6 +289,20 @@ tree.setup(
                                    -- "always" means directory scans are always async.
                                    -- "never"  means directory scans are never async.
     bind_to_cwd = true, -- true creates a 2-way binding between vim's cwd and neo-tree's root
+    components = {
+      name = function(config, node, state)
+        -- first call the default name component
+        local cc = require("neo-tree.sources.common.components")
+        local result = cc.name(config, node, state)
+        -- if it is root, customize the name how you want
+        if node:get_depth() == 1 then
+          print(state.path)
+          print(utils.basename(state.path))
+          result.text = utils.basename(state.path)
+        end
+        return result
+      end
+    },
     -- The renderer section provides the renderers that will be used to render the tree.
     --   The first level is the node type.
     --   For each node type, you can specify a list of components to render.

@@ -24,6 +24,20 @@ M.sleep = function(n)
   os.execute("sleep " .. tonumber(n))
 end
 
+M.splitpath = function(path) 
+  return string.match(path,"^(.-)[\\/]?([^\\/]*)$")
+end
+
+M.basename = function(path)
+  local _, s2 = M.splitpath(path)
+  return s2
+end
+
+M.dirname = function(path)
+  local s1, _ = M.splitpath(path)
+  return s1
+end
+
 -- Close current buffer
 function M.close_buffer()
   local current_buf = vim.api.nvim_get_current_buf()
