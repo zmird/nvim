@@ -296,8 +296,6 @@ tree.setup(
         local result = cc.name(config, node, state)
         -- if it is root, customize the name how you want
         if node:get_depth() == 1 then
-          print(state.path)
-          print(utils.basename(state.path))
           result.text = utils.basename(state.path)
         end
         return result
