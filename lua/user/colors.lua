@@ -44,7 +44,8 @@ M.git = {
   change                = github_colors.git.change,
   delete                = github_colors.git.delete,
   conflict              = github_colors.git.conflict,
-  ignore                = github_colors.git.ignore
+  ignore                = github_colors.git.ignore,
+  untracked             = github_colors.git.change,
 }
 
 -- Generic Colors

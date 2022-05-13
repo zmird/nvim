@@ -23,6 +23,12 @@ local fg_bg = utils.fg_bg
 
 -- NeoVim Tree
 -- fg("NvimTreeFolderIcon", colors.blue)
+fg("NeoTreeGitAdded", colors.git.add)
+fg("NeoTreeGitConflict", colors.git.conflict)
+fg("NeoTreeGitDeleted", colors.git.delete)
+fg("NeoTreeGitIgnored", colors.git.ignore)
+fg("NeoTreeGitModified", colors.git.change)
+fg("NeoTreeGitUntracked", colors.git.untracked)
 
 -- Telescope
 

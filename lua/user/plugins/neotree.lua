@@ -148,7 +148,7 @@ tree.setup(
         deleted   = icons.minus,-- this can only be used in the git_status source
         renamed   = icons.arrowRight,-- this can only be used in the git_status source
         -- Status type
-        untracked = icons.questionMark,
+        untracked = "? ",
         ignored   = icons.errorSlash,
         unstaged  = icons.dot .. " ",
         staged    = icons.check .. " ",

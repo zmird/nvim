@@ -1,3 +1,8 @@
+local utils_status_ok, utils = pcall(require, "user.utils")
+if not utils_status_ok then
+  return
+end
+
 local opts = { noremap = true, silent = true }
 
 vim.cmd [[noremap! <C-BS> <C-w>]]            -- mapping for ctrl backspace
@@ -7,14 +12,13 @@ vim.cmd [[tnoremap <C-v><Esc> <Esc>]]
 
 local keymap = vim.api.nvim_set_keymap
 
-keymap('n', '<C-j>', ':bprev<CR>', opts)     -- buffer previous
-keymap('n', '<C-k>', ':bnext<CR>', opts)     -- buffer next
-keymap('n', '<C-h>', '<C-W>h', opts)         -- left split
-keymap('n', '<C-l>', '<C-W>l', opts)         -- right split
+keymap('n', '<c-x>', '<cmd>lua require("user.utils").close_buffer()<cr>', opts)
+-- keymap('n', '<C-h>', '<C-W>h', opts)         -- left split
+-- keymap('n', '<C-l>', '<C-W>l', opts)         -- right split
 keymap('n', '<C-s>', ':w<CR>', opts)         -- save file
 keymap('i', '<C-s>', '<Esc>:w<CR>i', opts)   -- save file in insert mode
 keymap('n', '<C-h>', ':noh<CR>', opts)       -- turn off highlighting
-keymap('t', '<Esc>', '<C-\\><C-n>', opts)    -- exit terminal mode
+-- keymap('t', '<Esc>', '<C-\\><C-n>', opts)    -- exit terminal mode
 
 -- NeoTree
 keymap('n', '<C-g>', "<cmd>Neotree toggle<cr>", opts)
@@ -39,6 +43,10 @@ keymap('n', '<Leader>fz', '<cmd>Telescope current_buffer_fuzzy_find<cr>', opts)
 -- Comment
 keymap("n", "<C-_>", "<cmd>lua require('Comment.api').toggle_current_linewise()<cr>", opts)
 keymap("x", "<C-_>", "<esc><cmd>lua require('Comment.api').toggle_current_linewise_op(vim.fn.visualmode())<cr>", opts)
+
+--- Bufferline
+keymap('n', '<C-h>', ':BufferLineCyclePrev<CR>', opts)     -- buffer previous
+keymap('n', '<C-l>', ':BufferLineCycleNext<CR>', opts)     -- buffer next
 
 -- Toggleterm
 keymap("n", "<Leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<cr>", opts)
