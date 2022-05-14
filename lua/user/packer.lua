@@ -198,6 +198,7 @@ packer.startup(function(use)
     "goolord/alpha-nvim",
     "akinsho/nvim-bufferline.lua",
     "akinsho/toggleterm.nvim",
+    "stevearc/dressing.nvim",
     {
       "nvim-neo-tree/neo-tree.nvim",
       branch = "v2.x",
