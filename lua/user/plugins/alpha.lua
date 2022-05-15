@@ -10,7 +10,7 @@ end
 
 local plugins = ""
 if vim.fn.has "linux" == 1 or vim.fn.has "mac" == 1 then
-  local handle = io.popen 'find $HOME"/.local/share/nvim/site/pack/packer" -maxdepth 2 | grep pack | wc -l | tr -d "\n" '
+  local handle = io.popen 'find $HOME"/.config/local/share/nvim/site/pack/packer" -maxdepth 2 | grep pack | wc -l | tr -d "\n" '
   plugins = handle:read "*a"
   handle:close()
 
@@ -61,7 +61,7 @@ local buttons = {
     button("s", icons.reload      .. "   Restore", '<cmd>lua require("persistence").load({ last = true })<cr>]'),
     button("f", icons.folderOpen  .. "   Projects", ":Telescope find_files<CR>"),
     button("u", icons.container   .. "   Update", ":PackerSync<CR>"),
-    button("c", icons.cog         .. "   Config", ":e ~/.config/nvim/init.lua<CR>"),
+    button("c", icons.cog         .. "   Config", ":e ~/.config/nvim/lua/user/packer.lua<CR>"),
     button("q", icons.quit        .. "   Quit", ":qa!<CR>"),
   },
   opts = {

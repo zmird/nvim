@@ -94,10 +94,11 @@ packer.startup(function(use)
   use {
     {
       "nvim-telescope/telescope.nvim",
-      cmd = "Telescope",
+      cmd = {"Telescope", "Legendary"},
       after = {
         "telescope-fzf-native.nvim",
         "telescope-project.nvim",
+        "telescope-ui-select.nvim",
       },
       config = function ()
         require "user.plugins.telescope"
@@ -112,6 +113,10 @@ packer.startup(function(use)
       "nvim-telescope/telescope-project.nvim",
       cmd = "Telescope",
     },
+    {
+      "nvim-telescope/telescope-ui-select.nvim",
+      cmd = "Telescope",
+    }
   }
 
   -- Treesitter
@@ -198,7 +203,7 @@ packer.startup(function(use)
     "goolord/alpha-nvim",
     "akinsho/nvim-bufferline.lua",
     "akinsho/toggleterm.nvim",
-    "stevearc/dressing.nvim",
+    -- "stevearc/dressing.nvim",
     {
       "nvim-neo-tree/neo-tree.nvim",
       branch = "v2.x",
