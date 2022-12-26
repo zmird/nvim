@@ -220,7 +220,7 @@ tree.setup(
   window = { -- see https://github.com/MunifTanjim/nui.nvim/tree/main/lua/nui/popup for
              -- possible options. These can also be functions that return these options.
     position = "left", -- left, right, float, current
-    width = 30, -- applies to left and right positions
+    width = 40, -- applies to left and right positions
     popup = { -- settings that apply to float position only
       size = {
         height = "80%",
