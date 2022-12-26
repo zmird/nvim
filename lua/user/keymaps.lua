@@ -41,8 +41,8 @@ keymap('n', '<Leader>fj', '<cmd>Telescope jump_list<cr>', opts)
 keymap('n', '<Leader>fz', '<cmd>Telescope current_buffer_fuzzy_find<cr>', opts)
 
 -- Comment
-keymap("n", "<C-_>", "<cmd>lua require('Comment.api').toggle_current_linewise()<cr>", opts)
-keymap("x", "<C-_>", "<esc><cmd>lua require('Comment.api').toggle_current_linewise_op(vim.fn.visualmode())<cr>", opts)
+keymap("n", "<C-_>", "<cmd>lua require('Comment.api').toggle.linewise.current()<cr>", opts)
+keymap("x", "<C-_>", "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>", opts)
 
 --- Bufferline
 keymap('n', '<C-h>', ':BufferLineCyclePrev<CR>', opts)     -- buffer previous

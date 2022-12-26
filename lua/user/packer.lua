@@ -54,7 +54,7 @@ packer.startup(function(use)
     "nvim-lua/popup.nvim",
     "nvim-lua/plenary.nvim",
     "nathom/filetype.nvim",
-    "zmird/nvim-web-devicons",
+    'kyazdani42/nvim-web-devicons',
   }
 
   -- Themes
@@ -92,7 +92,7 @@ packer.startup(function(use)
 
   -- Telescope
   use {
-    {
+    -- {
       "nvim-telescope/telescope.nvim",
       cmd = {"Telescope", "Legendary"},
       after = {
@@ -100,23 +100,18 @@ packer.startup(function(use)
         "telescope-project.nvim",
         "telescope-ui-select.nvim",
       },
+      requires = {
+        {
+          "nvim-telescope/telescope-fzf-native.nvim",
+          run = "make"
+        },
+        "nvim-telescope/telescope-project.nvim",
+        "nvim-telescope/telescope-ui-select.nvim",
+      },
       config = function ()
         require "user.plugins.telescope"
       end,
-    },
-    {
-      "nvim-telescope/telescope-fzf-native.nvim",
-      run = "make",
-      cmd = "Telescope",
-    },
-    {
-      "nvim-telescope/telescope-project.nvim",
-      cmd = "Telescope",
-    },
-    {
-      "nvim-telescope/telescope-ui-select.nvim",
-      cmd = "Telescope",
-    }
+    -- },
   }
 
   -- Treesitter
