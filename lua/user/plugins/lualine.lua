@@ -3,8 +3,8 @@ if not lualine_status_ok then
   return
 end
 
-local gps_status_ok, gps = pcall(require, "nvim-gps")
-if not gps_status_ok then
+local navic_status_ok, navic = pcall(require, "nvim-navic")
+if not navic_status_ok then
   return
 end
 
@@ -19,6 +19,9 @@ if not icons_status_ok then
 end
 
 local conditions = {
+	not_neotree = function ()
+		return not vim.bo.filetype == "neo-tree"
+	end,
 	not_alpha = function ()
 		return not vim.bo.filetype == "alpha"
 	end,
@@ -39,9 +42,14 @@ local conditions = {
 local config = {
   options = {
     -- Disable sections and component separators
-		theme = "github_dark_default",
+    globalstatus = false,
+		theme = "github_dark",
     component_separators = '',
     section_separators = '',
+    disabled_filetypes = {
+      'neo-tree',
+      'Outline',
+    }
   },
   sections = {
     -- these are to remove the defaults
@@ -62,7 +70,7 @@ local config = {
     lualine_c = {},
     lualine_x = {},
   },
-	extensions = {'nvim-tree', 'neo-tree'}
+	extensions = {'neo-tree'}
 }
 
 -- Inserts a component in lualine_c at left section
@@ -103,6 +111,7 @@ ins_left {
 
 ins_left {
   'filename',
+  path = 1,
   cond = conditions.buffer_not_empty,
   color = { fg = colors.white, gui = 'bold' },
 }
@@ -148,8 +157,8 @@ ins_left {
 }
 
 ins_left {
-	gps.get_location,
-	cond = gps.is_available
+	navic.get_location,
+	cond = navic.is_available
 }
 
 -- Right section
@@ -163,7 +172,8 @@ ins_right {
 		added = icons.gitAdd .. ' ',
 		modified = icons.gitChange,
 		removed = icons.gitRemove .. ' ',
-	}
+	},
+	padding = { right = 2 }
 }
 
 ins_right {
@@ -174,7 +184,7 @@ ins_right {
 
 ins_right {
 	'location',
-	padding = { left = 1 },
+	padding = { left = 1 , right = 2},
 	-- cond = conditions.not_alpha,
 }
 

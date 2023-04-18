@@ -24,7 +24,7 @@ M.sleep = function(n)
   os.execute("sleep " .. tonumber(n))
 end
 
-M.splitpath = function(path) 
+M.splitpath = function(path)
   return string.match(path,"^(.-)[\\/]?([^\\/]*)$")
 end
 
@@ -38,8 +38,22 @@ M.dirname = function(path)
   return s1
 end
 
+M.hideCursor = function ()
+  local hl = vim.api.nvim_get_hl_by_name('Cursor', true)
+  hl.blend = 100
+  vim.api.nvim_set_hl(0, 'Cursor', hl)
+  vim.opt.guicursor:append('a:Cursor/lCursor')
+end
+
+M.showCursor = function ()
+  local hl = vim.api.nvim_get_hl_by_name('Cursor', true)
+  hl.blend = 0
+  vim.api.nvim_set_hl(0, 'Cursor', hl)
+  vim.opt.guicursor:remove('a:Cursor/lCursor')
+end
+
 -- Close current buffer
-function M.close_buffer()
+M.close_buffer = function ()
   local current_buf = vim.api.nvim_get_current_buf()
   -- Go to next buffer
   vim.cmd [[BufferLineCycleNext]]

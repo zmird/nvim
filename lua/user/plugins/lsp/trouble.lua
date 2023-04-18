@@ -3,6 +3,11 @@ if not trouble_status_ok then
   return
 end
 
+local icons_status_ok, icons = pcall(require, "user.icons")
+if not icons_status_ok then
+  return
+end
+
 trouble.setup{
 	position = "bottom", -- position of the list can be: bottom, top, left, right
 	height = 10, -- height of the trouble list when position is top or bottom
@@ -39,11 +44,11 @@ trouble.setup{
 	auto_fold = false, -- automatically fold a file trouble list at creation
 	signs = {
 			-- icons / text used for a diagnostic
-			error = "",
-			warning = "",
-			hint = "",
-			information = "",
-			other = "﫠"
+			error = icons.symbols.errors,
+			warning = icons.symbols.warning,
+			hint = icons.symbols.hint,
+			information = icons.symbols.info,
+			other = icons.symbols.check
 	},
 	use_diagnostic_signs = true -- enabling this will use the signs defined in your lsp client
 }

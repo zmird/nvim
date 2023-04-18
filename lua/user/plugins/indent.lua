@@ -3,6 +3,7 @@ if not indent_status_ok then
   return
 end
 
+vim.opt.list = false
 vim.opt.listchars = {
   space = "⋅",
   eol = "↴",
@@ -10,8 +11,13 @@ vim.opt.listchars = {
 
 indent.setup {
   char = "|",
-  buftype_exclude = {"terminal", "TelescopePrompt"},
+  buftype_exclude = {
+    "nofile",
+    "terminal",
+    "TelescopePrompt"
+  },
   filetype_exclude = {
+    "noice",
     "help",
     "alpha",
     "neo-tree",

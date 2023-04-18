@@ -4,7 +4,8 @@ if not status_ok then
 end
 
 telescope.load_extension("fzf")
--- telescope.load_extension("project")
+telescope.load_extension("file_browser")
+telescope.load_extension("projects")
 telescope.load_extension("ui-select")
 
 local actions = require "telescope.actions"
@@ -14,7 +15,7 @@ telescope.setup {
     prompt_prefix = "   ",
     selection_caret = "  ",
     entry_prefix = "  ",
-    initial_mode = "insert",
+    initial_mode = "normal",
     selection_strategy = "reset",
     sorting_strategy = "ascending",
     layout_strategy = "horizontal",
@@ -79,7 +80,7 @@ telescope.setup {
       },
 
       n = {
-        ["<esc>"] = actions.close,
+        ["q"] = actions.close,
         ["<CR>"] = actions.select_default,
         ["<C-x>"] = actions.select_horizontal,
         ["<C-v>"] = actions.select_vertical,
@@ -121,12 +122,16 @@ telescope.setup {
     -- builtin picker
     builtin = {
       prompt_title = false,
-      previewer = false,
+      previewer = true,
     },
     find_file = {
       -- prompt_title = true,
       previewer = false,
     },
+    -- lsp_references = {
+    --   previewer = true,
+    --   -- initial_mode = "insert",
+    -- }
   },
   extensions = {
       fzf = {
@@ -137,8 +142,10 @@ telescope.setup {
       },
       -- project = {
       --   base_dirs = {
-      --     -- '~/Workspace/Cineca/gitlab.cineca.it/',
+      --     '~/Workspace/github',
+      --     '~/Workspace/gitlab'
       --   }
       -- },
+      projects = {},
   },
 }

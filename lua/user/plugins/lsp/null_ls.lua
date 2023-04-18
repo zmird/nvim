@@ -15,12 +15,17 @@ null_ls.setup {
     formatting.prettier.with { extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } },
     formatting.black.with { extra_args = { "--fast" } },
     formatting.stylua,
+    formatting.goimports,
     
     -- Diagnostics
     diagnostics.flake8,
+    diagnostics.ansiblelint,
+    diagnostics.golangci_lint,
     
     -- Code actions
     code_actions.gitsigns,
     code_actions.gitrebase,
+    code_actions.gomodifytags,
+
   },
 }

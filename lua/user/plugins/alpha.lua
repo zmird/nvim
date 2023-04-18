@@ -8,15 +8,13 @@ if not icons_status_ok then
   return
 end
 
-local plugins = ""
-if vim.fn.has "linux" == 1 or vim.fn.has "mac" == 1 then
-  local handle = io.popen 'find $HOME"/.config/local/share/nvim/site/pack/packer" -maxdepth 2 | grep pack | wc -l | tr -d "\n" '
-  plugins = handle:read "*a"
-  handle:close()
+local lazy_status_ok, lazy = pcall(require, "lazy")
 
-  plugins = plugins:gsub("^%s*(.-)%s*$", "%1")
-else
-  plugins = "N/A"
+
+local plugins = "N/A"
+
+if lazy_status_ok then
+  plugins = lazy.stats().count
 end
 
 local pluginCount = {
@@ -58,11 +56,10 @@ end
 local buttons = {
   type = "group",
   val = {
-    button("s", icons.reload      .. "   Restore", '<cmd>lua require("persistence").load({ last = true })<cr>]'),
-    button("f", icons.folderOpen  .. "   Projects", ":Telescope find_files<CR>"),
-    button("u", icons.container   .. "   Update", ":PackerSync<CR>"),
-    button("c", icons.cog         .. "   Config", ":e ~/.config/nvim/lua/user/packer.lua<CR>"),
-    button("q", icons.quit        .. "   Quit", ":qa!<CR>"),
+    button("p", icons.folderOpen      .. "   Projects", ":Telescope projects<CR>"),
+    button("c", icons.cog             .. "   Config", ":cd ~/.config/nvim<CR>:e ~/.config/nvim/lua/user/lazy.lua<CR><cmd>NeoTreeShowToggle<cr>"),
+    button("l", icons.container       .. "   Lazy", ":Lazy<CR>"),
+    button("q", icons.quit            .. "   Quit", ":qa!<CR>"),
   },
   opts = {
     position = "center",
@@ -86,4 +83,5 @@ local opts = {
     margin = 44,
   },
 }
+
 alpha.setup(opts)
