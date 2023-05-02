@@ -111,13 +111,14 @@ end
 local servers = {
   "lua_ls",
   "gopls",
-
+  "clangd",
 }
 
 mason_lspconfig.setup {
   ensure_installed = {
     "lua_ls",
     "gopls",
+    "clangd",
   },
   automatic_installed = true,
 }
