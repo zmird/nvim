@@ -4,7 +4,7 @@ if not treesitter_status_ok then
 end
 
 treesitter.setup {
-	ensure_installed = {"bash", "c", "cpp", "css", "dart", "go", "html", "java",
+	ensure_installed = {"bash", "c", "cpp", "css", "dart", "go", "gomod", "html", "java",
 		"javascript", "json", "lua", "markdown", "markdown_inline", "org",
 		"regex", "rust", "scss", "tsx", "typescript", "python", "yaml"},
   sync_install = false, 
@@ -12,7 +12,7 @@ treesitter.setup {
   highlight = {
     enable = true, -- false will disable the whole extension
     disable = { "" }, -- list of language that will be disabled
-    additional_vim_regex_highlighting = true,
+    additional_vim_regex_highlighting = false,
   },
   indent = { enable = true },
 }

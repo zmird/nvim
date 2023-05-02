@@ -345,6 +345,7 @@ local plugins = {
   {"nvim-tree/nvim-web-devicons"},
   {
     "projekt0n/github-nvim-theme",
+    tag = "v0.0.6",
     lazy = false,
     priority = 1000,
     config = function ()
