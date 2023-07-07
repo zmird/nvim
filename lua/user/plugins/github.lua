@@ -7,9 +7,9 @@ github_theme.setup({
   theme_style = "dark_default",
   dark_float = true,
   dark_sidebar = true,
-  -- function_style = "italic",
-  keyword_style = "italic",
-  -- variable_style = "underline",
+  function_style = "bold",
+  -- keyword_style = "italic",
+  -- variable_style = "bold",
   sidebars = {"qf", "vista_kind", "terminal", "packer"},
 
   -- Overwrite the highlight groups
@@ -19,9 +19,12 @@ github_theme.setup({
       DiagnosticHint = {link = "LspDiagnosticsDefaultHint"},
       -- this will remove the highlight groups
       -- TSField = {},
-      Keyword = { fg = c.blue },
+      -- Keyword = { fg = c.blue },
+      -- Operator = { fg = c.blue },
+      Type = { fg = c.blue },
       Constant = { fg = c.bright_cyan },
       Number = { fg = c.bright_blue },
+      -- String = { fg = c.green },
     }
   end,
 })

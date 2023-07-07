@@ -64,6 +64,7 @@ local options = {
 }
 
 local globals = {
+  editorconfig             = true,
   mapleader                = " ",
   fillchars                = "fold:\\",
   loaded_matchparen        = 1,

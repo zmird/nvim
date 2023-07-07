@@ -179,7 +179,7 @@ local plugins = {
   },
   {
     "nathom/filetype.nvim",
-    lazy = false,
+    lazy = true,
   },
   -- Treesitter
   {
