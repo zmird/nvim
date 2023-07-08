@@ -43,7 +43,7 @@ local config = {
   options = {
     -- Disable sections and component separators
     globalstatus = false,
-		theme = "github_dark",
+		theme = "tokyonight-night",
     component_separators = '',
     section_separators = '',
     disabled_filetypes = {
@@ -90,7 +90,7 @@ ins_left {
   end,
   color = function()
 		local mode = require("lualine.utils.mode").get_mode()
-		local inactive_hi = { bg = colors.bg2, fg = colors.fg_dark }
+		local inactive_hi = { bg = colors.bg_dark, fg = colors.fg_dark }
 		local mode_color = {
 			normal = colors.blue,
 			insert = colors.green,

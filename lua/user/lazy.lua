@@ -250,6 +250,7 @@ local plugins = {
       require("user.plugins.cmp")
     end
   },
+
   -- Snippets
   {
     "L3MON4D3/LuaSnip",
@@ -258,6 +259,7 @@ local plugins = {
       "rafamadriz/friendly-snippets",
     }
   },
+
   -- Telescope
   {
     "nvim-telescope/telescope.nvim",
@@ -274,6 +276,7 @@ local plugins = {
       },
     },
   },
+
   -- Code
   {
     "nacro90/numb.nvim",
@@ -344,12 +347,11 @@ local plugins = {
   -- UI
   {"nvim-tree/nvim-web-devicons"},
   {
-    "projekt0n/github-nvim-theme",
-    tag = "v0.0.6",
+    "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
     config = function ()
-      require "user.plugins.github"
+      require "user.plugins.tokyonight"
     end
   },
   {
