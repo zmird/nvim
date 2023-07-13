@@ -31,6 +31,7 @@ local options = {
   hlsearch       = true,                        -- Highlight all matches on previous search pattern
   ignorecase     = true,                        -- Ignore case when searching
   incsearch      = true,                        -- Search as characters are entered
+  laststatus     = 3,
   lazyredraw     = false,                       -- Makes macros faster & prevent errors in complicated mappings
   mouse          = "a",                         -- Enable mouse support
   number         = true,                        -- Show line numbers
@@ -39,7 +40,8 @@ local options = {
   scrolloff      = 8,                           -- Always keep space when scrolling to bottom/top edge
   sidescrolloff      = 8,                       -- Always keep space when scrolling to left/righ edge
   shiftwidth     = 2,                           -- Number of spaces to use when shifting
-  showtabline    = 2,                           -- Always show tabs
+  -- shortmess      = "at",
+  showtabline    = 0,                           -- Lazy load tabline
   showmatch      = true,                        -- Highlight matching braces
   showmode       = false,                       -- Don't show mode in status bar
   signcolumn     = "yes:2",                     -- Add extra sign column next to line number
@@ -83,6 +85,9 @@ local globals = {
   loaded_remote_plugins    = 1,
 }
 
+-- Custom globals
+globals.dark_theme = true
+
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
@@ -91,7 +96,7 @@ for k, v in pairs(globals) do
   vim.g[k] = v
 end
 
-vim.opt.shortmess:append "c"
+vim.opt.shortmess:append "I"
 vim.opt.iskeyword:append "-"
 vim.opt.formatoptions:remove "cro"
 

@@ -288,7 +288,7 @@ tree.setup(
     async_directory_scan = "auto", -- "auto"   means refreshes are async, but it's synchronous when called from the Neotree commands.
                                    -- "always" means directory scans are always async.
                                    -- "never"  means directory scans are never async.
-    bind_to_cwd = true, -- true creates a 2-way binding between vim's cwd and neo-tree's root
+    bind_to_cwd = false, -- true creates a 2-way binding between vim's cwd and neo-tree's root
     components = {
       name = function(config, node, state)
         -- first call the default name component

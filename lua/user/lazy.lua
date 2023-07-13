@@ -191,13 +191,6 @@ local plugins = {
       require "user.plugins.treesitter"
     end
   },
-  {
-    "SmiteshP/nvim-navic",
-    dependencies = "nvim-treesitter/nvim-treesitter",
-    config = function ()
-      require "user.plugins.navic"
-    end
-  },
 
   -- LSP
   {
@@ -347,31 +340,20 @@ local plugins = {
   -- UI
   {"nvim-tree/nvim-web-devicons"},
   {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    lazy = false,
+    priority = 1000,
+    config = function ()
+      require "user.plugins.catppuccin"
+    end
+  },
+  {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
     config = function ()
       require "user.plugins.tokyonight"
-    end
-  },
-  {
-    "goolord/alpha-nvim",
-    lazy = false,
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
-    config = function ()
-      require "user.plugins.alpha"
-    end
-  },
-  {
-    "akinsho/nvim-bufferline.lua",
-    lazy = false,
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
-    config = function ()
-      require "user.plugins.bufferline"
     end
   },
   {
@@ -388,18 +370,6 @@ local plugins = {
     },
     config = function ()
       require "user.plugins.neotree"
-    end
-  },
-  {
-    "hoob3rt/lualine.nvim",
-    lazy = false,
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-      "SmiteshP/nvim-navic",
-      "projekt0n/github-nvim-theme",
-    },
-    config = function ()
-      require "user.plugins.lualine"
     end
   },
   {

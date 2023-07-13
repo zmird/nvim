@@ -11,4 +11,4 @@ vim.cmd [[au BufRead,BufNewFile */tasks/*.yml set filetype=yaml.ansible]]
 -- vim.cmd [[au BufRead,BufNewFile */tasks/**/*.yml set filetype=yaml.ansible]]
 
 -- Remove sign column
-vim.cmd [[au FileType Outline setlocal signcolumn=no ]]
+-- vim.cmd [[au FileType Outline setlocal signcolumn=no ]]

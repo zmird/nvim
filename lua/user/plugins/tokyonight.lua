@@ -30,7 +30,9 @@ tokyonight.setup({
   --- You can override specific color groups to use other groups or a hex color
   --- function will be called with a ColorScheme table
   ---@param colors ColorScheme
-  on_colors = function(colors) end,
+  on_colors = function(colors)
+    colors.fg_highlight = "#ffffff"
+  end,
 
   --- You can override specific highlights to use other groups or a hex color
   --- function will be called with a Highlights and ColorScheme table
@@ -38,26 +40,209 @@ tokyonight.setup({
   ---@param colors ColorScheme
   on_highlights = function(hl, c)
     -- Neotree
-    -- print(c.git.add)
-    -- hl.NeoTreeGitAdded = {
-    --   c.git.add
+    hl.NeoTreeGitAdded = {
+      fg = c.git.add,
+    }
+    hl.NeoTreeGitConflict = {
+      fg = c.orange,
+    }
+    hl.NeoTreeGitDeleted = {
+      fg = c.git.delete
+    }
+    hl.NeoTreeGitIgnored = {
+      fg = c.git.ignore
+    }
+    hl.NeoTreeGitModified = {
+      fg = c.git.change
+    }
+    hl.NeoTreeGitUntracked = {
+      fg = c.warning
+    }
+    hl.NeoTreeWinSeparator = {
+      fg = c.bg_dark,
+      bg = c.bg_dark
+    }
+
+    -- Dashboard
+    hl.DashboardMessage = {
+      fg = c.comment,
+      bg = c.bg,
+    }
+    hl.DashboardAscii = {
+      fg = c.bg_dark,
+      bg = c.purple,
+    }
+    hl.DashboardButtons = {
+      fg = c.fg,
+      bg = c.bg,
+    }
+
+    -- Tabline
+    -- hl.Tabline = {
+    --   fg = c.blue,
+    --   bg = c.red
     -- }
-    -- hl.NeoTreeGitConflict = {
-    --   c.orange
-    -- }
-    -- hl.NeoTreeGitDeleted = {
-    --   c.git.delete
-    -- }
-    -- hl.NeoTreeGitIgnored = {
-    --   c.git.ignore
-    -- }
-    -- hl.NeoTreeGitModified = {
-    --   c.git.change
-    -- }
-    -- hl.NeoTreeGitUntracked = {
-    --   c.warning
-    -- }
-    --
+    hl.TabLineFill = {
+      bg = c.bg_dark
+    }
+    hl.TablineBufOn = {
+      fg = c.fg,
+      bg = c.bg,
+    }
+    hl.TablineBufOff = {
+      fg = c.comment,
+      bg = c.bg_dark
+    }
+    hl.TablineTabOn = {
+      fg = c.fg,
+      bg = c.bg
+    }
+    hl.TablineTabOff = {
+      fg = c.comment,
+      bg = c.bg_dark
+    }
+    hl.TablineBufOnClose = {
+      fg = c.fg,
+      bg = c.bg
+    }
+    hl.TablineBufOffClose = {
+      fg = c.comment,
+      bg = c.bg_dark
+    }
+    hl.TablineBufOnModified = {
+      fg = c.fg,
+      bg = c.bg
+    }
+    hl.TablineBufOffModified = {
+      fg = c.comment,
+      bg = c.bg_dark
+    }
+    hl.TablineThemeToggleBtn = {
+      fg = c.fg,
+      bg = c.bg_highlight
+    }
+    hl.TablineCloseAllBufsBtn = {
+      fg = c.bg,
+      bg = c.red
+    }
+
+    -- StatusLine
+    hl.St_NormalMode = {
+      fg = c.cyan
+    }
+    hl.St_VisualMode = {
+      fg = c.purple
+    }
+    hl.St_InsertMode = {
+      fg = c.green
+    }
+    hl.St_ReplaceMode = {
+      fg = c.red
+    }
+    hl.St_CommandMode = {
+      fg = c.yellow
+    }
+    hl.St_ConfirmMode = {
+      fg = c.blue1
+    }
+    hl.St_TerminalMode = {
+      fg = c.orange
+    }
+    hl.St_NTerminalMode = {
+      fg = c.orange
+    }
+    hl.St_Text = {
+      fg = c.fg,
+    }
+    hl.St_Filename = {
+      fg = c.fg,
+      bg = c.bg_highlight,
+      bold = true
+    }
+    hl.St_GitAdd = {
+      fg = c.git.add,
+    }
+    hl.St_GitChange = {
+      fg = c.orange,
+    }
+    hl.St_GitRemove = {
+      fg = c.git.delete,
+    }
+    hl.St_lspError = {
+      fg = c.error
+    }
+    hl.St_lspWarning = {
+      fg = c.warning
+    }
+    hl.St_lspHints = {
+      fg = c.hint
+    }
+    hl.St_lspInfo = {
+      fg = c.info
+    }
+    hl.St_lspStatus = {
+      fg = c.fg,
+      bold = true
+    }
+    hl.St_PositionSeparator = {
+      fg = c.green
+    }
+    hl.St_PositionIcon = {
+      fg = c.bg_dark,
+      bg = c.green
+    }
+    hl.St_PositionText = {
+      fg = c.green
+    }
+    hl.St_DirectorySeparator = {
+      fg = c.red
+    }
+    hl.St_DirectoryIcon = {
+      fg = c.bg_dark,
+      bg = c.red
+    }
+    hl.St_DirectoryText = {
+      fg = c.red
+    }
+
+    -- Cheatsheet
+    hl.CheatsheetHeaderRed = {
+      fg = c.bg,
+      bg = c.red
+    }
+    hl.CheatsheetHeaderBlue = {
+      fg = c.bg,
+      bg = c.blue
+    }
+    hl.CheatsheetHeaderYellow = {
+      fg = c.bg,
+      bg = c.yellow
+    }
+    hl.CheatsheetHeaderGreen = {
+      fg = c.bg,
+      bg = c.green
+    }
+    hl.CheatsheetHeaderOrange = {
+      fg = c.bg,
+      bg = c.orange
+    }
+    hl.CheatsheetHeaderMagenta = {
+      fg = c.bg,
+      bg = c.magenta
+    }
+    hl.CheatsheetHeaderCyan = {
+      fg = c.bg,
+      bg = c.cyan
+    }
+    hl.CheatsheetHeaderPurple = {
+      fg = c.bg,
+      bg = c.purple
+    }
+    hl.CheatsheetSection = {
+      fg = c.fg,
+      bg = c.bg_highlight
+    }
+
     -- Telescope
     hl.TelescopeBorder = {
       fg = c.bg_dark,
