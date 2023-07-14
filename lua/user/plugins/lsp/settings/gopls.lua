@@ -1,6 +1,14 @@
 return {
 	settings = {
-    go = {
+	  gopls = {
+      semanticTokens = true,
+      completeUnimported = true,
+      usePlaceholders = true,
+      analyses = {
+        unusedparams = true,
+        unusedwrite = true,
+        unusedvariable = true,
+      }
     }
 	},
 }

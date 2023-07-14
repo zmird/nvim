@@ -20,6 +20,19 @@ local check_backspace = function()
   return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
 end
 
+local function border(hl_name)
+  return {
+    { "╭", hl_name },
+    { "─", hl_name },
+    { "╮", hl_name },
+    { "│", hl_name },
+    { "╯", hl_name },
+    { "─", hl_name },
+    { "╰", hl_name },
+    { "│", hl_name },
+  }
+end
+
 --   פּ ﯟ   some other good icons
 local kind_icons = {
   Class           = icons.code.class,
@@ -100,19 +113,25 @@ cmp.setup {
     }),
   },
   formatting = {
-    fields = { "kind", "abbr", "menu" },
-    format = function(entry, vim_item)
+    fields = {"abbr", "kind", "menu" },
+    format = function(_, item)
+      local icon = kind_icons[item.kind]
+
+      item.kind = string.format("%s %s", icon, item.kind)
+
       -- Kind icons
-      vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
+      -- vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
       -- vim_item.kind = string.format('%s %s', vim_item.kind, kind_icons[vim_item.kind]) -- This concatonates the icons with the name of the item kind
-      vim_item.menu = ({
-        nvim_lsp = "[LSP]",
-        nvim_lua = "[LSP]",
-        luasnip = "[Snippet]",
-        buffer = "[Buffer]",
-        path = "[Path]",
-      })[entry.source.name]
-      return vim_item
+      -- vim_item.menu = ({
+      --   nvim_lsp = "[LSP]",
+      --   nvim_lua = "[LSP]",
+      --   luasnip = "[Snippet]",
+      --   buffer = "[Buffer]",
+      --   path = "[Path]",
+      -- })[entry.source.name]
+      -- return vim_item
+
+      return item
     end,
   },
   sources = {
@@ -136,8 +155,16 @@ cmp.setup {
     native_menu = false,
   },
   window = {
-    -- completion = cmp.config.window.bordered(),
-    -- documentation = cmp.config.window.bordered(),
+    completion = {
+      side_padding = 1,
+      winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:PmenuSel",
+      scrollbar = false,
+      border = border "CmpBorder",
+    },
+    documentation = {
+      border = border "CmpDocBorder",
+      winhighlight = "Normal:CmpDoc",
+    },
   },
 }
 

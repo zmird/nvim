@@ -7,7 +7,9 @@ vim.cmd [[au Filetype go setlocal tabstop=4 shiftwidth=4 softtabstop=4]]
 
 -- Detect ansible type
 vim.cmd [[au BufRead,BufNewFile */playbooks/*.yml set filetype=yaml.ansible]]
+vim.cmd [[au BufRead,BufNewFile */playbooks/*.yaml set filetype=yaml.ansible]]
 vim.cmd [[au BufRead,BufNewFile */tasks/*.yml set filetype=yaml.ansible]]
+vim.cmd [[au BufRead,BufNewFile */tasks/*.yaml set filetype=yaml.ansible]]
 -- vim.cmd [[au BufRead,BufNewFile */tasks/**/*.yml set filetype=yaml.ansible]]
 
 -- Remove sign column

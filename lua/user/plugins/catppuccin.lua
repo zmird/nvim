@@ -54,6 +54,7 @@ catppuccin.setup({
     c.fg_dimmed = c.overlay0
     c.bg = c.base
     c.bg_dark = c.mantle
+    c.bg_darker = c.crust
     c.bg_highlight = c.surface0
 
     c.error = c.red
@@ -141,24 +142,35 @@ catppuccin.setup({
       TelescopeResultsTitle   = { bg = c.bg_dark, fg = c.bg_dark, },
 
       -- Cmp Hightlights
-      CmpItemKindText           = { fg = c.orange },
+      CmpBorder                 = { fg = c.fg },
+      CmpItemAbbr               = { fg = c.fg },
+      CmpItemAbbrMatch          = { fg = c.blue, bold = true },
+      CmpDoc                    = { bg = c.bg_darker },
+      CmpDocBorder              = { fg = c.bg_darker, bg = c.bg_darker },
+      CmpPmenu                  = { bg = c.bg },
+      CmpSel                    = { bold = true, bg = c.blue, fg = c.bg },
+
+      CmpItemKindText           = { fg = c.green },
+      CmpItemKindCopilot        = { fg = c.green },
       CmpItemKindMethod         = { fg = c.blue },
       CmpItemKindFunction       = { fg = c.blue },
-      CmpItemKindConstructor    = { fg = c.yellow },
-      CmpItemKindField          = { fg = c.blue },
-      CmpItemKindClass          = { fg = c.yellow },
-      CmpItemKindInterface      = { fg = c.orange },
-      CmpItemKindModule         = { fg = c.orange },
-      CmpItemKindProperty       = { fg = c.orange },
-      CmpItemKindValue          = { fg = c.orange },
-      CmpItemKindEnum           = { fg = c.orange },
-      CmpItemKindKeyword        = { fg = c.orange },
-      CmpItemKindSnippet        = { fg = c.orange },
-      CmpItemKindFile           = { fg = c.orange },
-      CmpItemKindEnumMember     = { fg = c.orange },
-      CmpItemKindConstant       = { fg = c.orange },
-      CmpItemKindStruct         = { fg = c.orange },
-      CmpItemKindTypeParameter  = { fg = c.orange }
+      CmpItemKindConstructor    = { fg = c.sapphire },
+      CmpItemKindField          = { fg = c.red },
+      CmpItemKindProperty       = { fg = c.red },
+      CmpItemKindIdentifier     = { fg = c.red },
+      CmpItemKindTypeParameter  = { fg = c.red },
+      CmpItemKindClass          = { fg = c.sky },
+      CmpItemKindInterface      = { fg = c.green },
+      CmpItemKindModule         = { fg = c.yellow },
+      CmpItemKindValue          = { fg = c.sky },
+      CmpItemKindEnum           = { fg = c.sapphire },
+      CmpItemKindKeyword        = { fg = c.fg },
+      CmpItemKindFile           = { fg = c.fg },
+      CmpItemKindFolder         = { fg = c.fg },
+      CmpItemKindEnumMember     = { fg = c.purple },
+      CmpItemKindConstant       = { fg = c.purple },
+      CmpItemKindStruct         = { fg = c.purple },
+      CmpItemKindSnippet        = { fg = c.red },
     }
   end ,
   integrations = {

@@ -35,16 +35,29 @@ M.setup = function()
 
   vim.diagnostic.config(config)
 
-  -- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  --   border = "single",
-  -- })
 
-  -- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-  --   border = "single",
-  -- })
+  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+    border = "single",
+  })
+
+  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+    border = "single",
+    focusable = false,
+    relative = "cursor",
+  })
+
+
+  local win = require "lspconfig.ui.windows"
+  local _default_opts = win.default_opts
+
+  win.default_opts = function(options)
+    local opts = _default_opts(options)
+    opts.border = "single"
+    return opts
+  end
 end
 
-local function lsp_highlight_document(client)
+M.on_attach = function(client, bufnr)
   -- Set autocommands conditional on server_capabilities
   if client.server_capabilities.document_highlight then
     vim.api.nvim_exec(
@@ -58,40 +71,10 @@ local function lsp_highlight_document(client)
       false
     )
   end
-end
 
-local function lsp_keymaps(bufnr)
-  local opts = { noremap = true, silent = true }
-  -- jumps
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-  -- vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts) -- Implemented with telescope
-
-  -- actions
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-a>", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-m>", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-
-  -- diagnostics
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
-
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-
-  -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>f", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "gl", '<cmd>lua vim.diagnostic.open_float({ border = "rounded" })<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-
-  vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format{ async = true }' ]]
-end
-
-M.on_attach = function(client, bufnr)
-  -- if client.name == "tsserver" then
-  --   client.resolved_capabilities.document_formatting = false
-  -- end
-  lsp_keymaps(bufnr)
-  lsp_highlight_document(client)
+  if not client.supports_method "textDocument/semanticTokens" then
+    client.server_capabilities.semanticTokensProvider = nil
+  end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
