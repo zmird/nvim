@@ -147,6 +147,15 @@ M.fg_bg = function(group, fgcol, bgcol)
   vim.cmd("hi " .. group .. " guifg=" .. fgcol .. " guibg=" .. bgcol)
 end
 
+M.contains = function(tbl, x)
+  for _, v in pairs(tbl) do
+    if v == x then
+      return true
+    end
+  end
+  return false
+end
+
 -- Print Table
 -- @param tbl Table
 -- @param indent Indent

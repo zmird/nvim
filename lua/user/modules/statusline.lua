@@ -27,7 +27,7 @@ M.modes = {
   ["vs"] = { "V-CHAR (Ctrl O)", "St_VisualMode" },
   ["V"] = { "V-LINE", "St_VisualMode" },
   ["Vs"] = { "V-LINE", "St_VisualMode" },
-  ["␖"] = { "V-BLOCK", "St_VisualMode" },
+  [""] = { "V-BLOCK", "St_VisualMode" },
 
   ["i"] = { "INSERT", "St_InsertMode" },
   ["ic"] = { "INSERT (completion)", "St_InsertMode" },
@@ -44,7 +44,7 @@ M.modes = {
 
   ["s"] = { "SELECT", "St_SelectMode" },
   ["S"] = { "S-LINE", "St_SelectMode" },
-  ["␓"] = { "S-BLOCK", "St_SelectMode" },
+  [""] = { "S-BLOCK", "St_SelectMode" },
   ["c"] = { "COMMAND", "St_CommandMode" },
   ["cv"] = { "COMMAND", "St_CommandMode" },
   ["ce"] = { "COMMAND", "St_CommandMode" },
@@ -56,12 +56,27 @@ M.modes = {
 }
 
 M.mode = function()
-  local m = vim.api.nvim_get_mode()
-  if m["mode"] ~= nil then
-    return "%#St_NormalMode#▊"
-  end
+  -- local m = vim.api.nvim_get_mode()
+  -- if not utils.contains(m, "mode") then
+  --   return "%#St_NormalMode#▊"
+  -- end
 
-  return "%#" .. M.modes[m][2] .. "#▊"
+  -- return "%#" .. M.modes[m.mode][2] .. "#▊"
+  
+  -- local get_mode = function()
+  --   local m = vim.fn.mode() or "n"
+  --   return "%#" .. M.modes[m][2] .. "#▊"
+  -- end
+  --
+  -- local ok, mode = pcall(get_mode)
+  -- if not ok then
+  --   print("error:", vim.fn.mode())
+  --   return "%#St_NormalMode#▊"
+  -- end
+  --
+  -- return mode
+  
+  return "%#" .. M.modes[vim.fn.mode()][2] .. "#▊"
 end
 
 M.fileInfo = function()

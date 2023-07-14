@@ -323,6 +323,15 @@ M.gitsigns = {
   },
 }
 
+M.tmuxnavigator = {
+  n = {
+    ["<C-h>"] = { "<cmd> TmuxNavigateLeft<CR>", "window left"},
+    ["<C-l>"] = { "<cmd> TmuxNavigateRight<CR>", "window right"},
+    ["<C-k>"] = { "<cmd> TmuxNavigateDown<CR>", "window down"},
+    ["<C-j>"] = { "<cmd> TmuxNavigateUp<CR>", "window up"},
+  }
+}
+
 M.ufo = {
   n = {
     ["zR"] = { "<cmd>lua require('ufo').openAllFolds()<cr>", "Open all folds" },

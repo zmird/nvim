@@ -352,6 +352,7 @@ local plugins = {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
+    enabled = false,
     config = function ()
       require "user.plugins.tokyonight"
     end
@@ -386,6 +387,10 @@ local plugins = {
     config = function ()
       require "user.plugins.noice"
     end
+  },
+  {
+    'christoomey/vim-tmux-navigator',
+    lazy = false
   },
   -- {"akinsho/toggleterm.nvim"},
   -- {"stevearc/dressing.nvim"},
