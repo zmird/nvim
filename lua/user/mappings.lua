@@ -341,7 +341,7 @@ M.ufo = {
 
 M.symbols = {
   n = {
-    ["gs"] = {"gs", "<cmd> SymbolsOutline <CR>", "Toggle symbols outline"}
+    ["tt"] = { "<cmd> SymbolsOutline<CR>", "Toggle symbols outline"}
   }
 }
 

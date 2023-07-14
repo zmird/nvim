@@ -181,6 +181,7 @@ local plugins = {
     "nathom/filetype.nvim",
     lazy = true,
   },
+
   -- Treesitter
   {
     "nvim-treesitter/nvim-treesitter",
@@ -238,9 +239,25 @@ local plugins = {
       "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-nvim-lsp-signature-help",
       "saadparwaiz1/cmp_luasnip",
+      {
+        "zbirenbaum/copilot-cmp",
+        config = function ()
+          require("copilot_cmp").setup()
+        end
+      }
     },
     config = function ()
       require("user.plugins.cmp")
+    end
+  },
+  {
+    "zbirenbaum/copilot.lua",
+    event = {
+      "InsertEnter",
+      "CmdlineEnter",
+    },
+    config = function ()
+      require("user.plugins.copilot")
     end
   },
 
@@ -268,6 +285,16 @@ local plugins = {
         build = "make"
       },
     },
+  },
+  { 
+    "olexsmir/gopher.nvim",
+    ft = {"go", "gomod"},
+    config = function(_, opts)
+      require("gopher").setup(opts)
+    end,
+    build = function()
+      vim.cmd[[ silent! GoInstallDeps ]]
+    end
   },
 
   -- Code
@@ -336,6 +363,18 @@ local plugins = {
       require("project_nvim").setup{}
     end
   },
+  {
+    "ggandor/leap.nvim",
+    event = {
+      "BufRead",
+    },
+    config = function ()
+      require('leap').add_default_mappings()
+    end,
+    dependencies = {
+      "tpope/vim-repeat"
+    },
+  },
 
   -- UI
   {"nvim-tree/nvim-web-devicons"},
@@ -394,33 +433,6 @@ local plugins = {
   },
   -- {"akinsho/toggleterm.nvim"},
   -- {"stevearc/dressing.nvim"},
-
-  -- Others
-  {
-    "epwalsh/obsidian.nvim",
-    lazy = false,
-    config = function ()
-      require("obsidian").setup {
-        dir = "~/Notes",
-        completion = {
-          nvim_cmp = true, -- if using nvim-cmp, otherwise set to false
-        },
-        note_id_func = function(givenTitle)
-          local noteTitle
-          if givenTitle ~= nil then
-            -- If title is given, transform it into valid file name.
-            noteTitle = givenTitle:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
-          else
-            -- If title is nil, just add 4 random uppercase letters to the suffix.
-            for _ = 1, 4 do
-              noteTitle = tostring(os.time()) .. "-" .. string.char(math.random(65, 90))
-            end
-          end
-          return noteTitle
-        end
-      }
-    end
-  },
 }
 
 
