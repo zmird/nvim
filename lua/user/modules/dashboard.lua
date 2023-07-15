@@ -42,7 +42,8 @@ local config = {
 local headerAscii = config.header
 local empty_line = config.empty_line
 
-local dashboardWidth = #headerAscii > 0 and #headerAscii[1] + 3 or 3
+-- local dashboardWidth = #empty_line > 0 and #empty_line[1] + 3 or 3
+local dashboardWidth = #empty_line + 3
 
 local max_height = #headerAscii + 4 + (2 * #config.buttons) -- 4  = extra spaces i.e top/bottom
 local get_win_height = api.nvim_win_get_height
@@ -159,6 +160,9 @@ M.open = function()
       end
     end, { buffer = 0 })
   end
+
+  -- move cursor out of the way
+  vim.cmd("normal! G")
 
   -- buf only options
   vim.opt_local.buflisted = false
