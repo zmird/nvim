@@ -159,6 +159,19 @@ cmp.setup {
       winhighlight = "Normal:CmpDoc",
     },
   },
+  compare = {
+    locality = {
+      lines_count = 300
+    }
+  },
+  matching = {
+    disallow_fuzzy_matching = true,
+    disallow_fullfuzzy_matching = true,
+    disallow_partial_fuzzy_matching = true,
+    disallow_partial_matching = false,
+    disallow_prefix_unmatching = true,
+  },
+  preselect = cmp.PreselectMode.Item,
   sorting = {
     priority_weight = 2,
     comparators = {
@@ -166,10 +179,12 @@ cmp.setup {
 
       -- Below is the default comparitor list and order for nvim-cmp
       cmp.config.compare.offset,
-      -- cmp.config.compare.scopes, --this is commented in nvim-cmp too
       cmp.config.compare.exact,
       cmp.config.compare.score,
       cmp.config.compare.recently_used,
+
+      -- cmp.config.compare.scopes, --this is commented in nvim-cmp too
+
       cmp.config.compare.locality,
       cmp.config.compare.kind,
       cmp.config.compare.sort_text,

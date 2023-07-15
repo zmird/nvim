@@ -94,6 +94,7 @@ catppuccin.setup({
       TablineCloseAllBufsBtn  = { fg = c.bg, bg = c.red },
 
       -- StatusLine
+      St_Text                 = { fg = c.fg, bg = c.bg_dark },
       St_NormalMode           = { fg = c.cyan },
       St_VisualMode           = { fg = c.purple },
       St_InsertMode           = { fg = c.green },
@@ -102,19 +103,18 @@ catppuccin.setup({
       St_ConfirmMode          = { fg = c.blue },
       St_TerminalMode         = { fg = c.orange },
       St_NTerminalMode        = { fg = c.orange },
-      St_Text                 = { fg = c.fg, },
       St_Filename             = { fg = c.fg, bg = c.bg_highlight, bold = true },
-      St_GitAdd               = { fg = c.git.add, },
-      St_GitChange            = { fg = c.orange, },
-      St_GitRemove            = { fg = c.git.delete, },
-      St_lspError             = { fg = c.error },
-      St_lspWarning           = { fg = c.warning },
-      St_lspHints             = { fg = c.hint },
-      St_lspInfo              = { fg = c.info },
-      St_lspStatus            = { fg = c.fg, bold = true },
+      St_GitAdd               = { fg = c.git.add, bg = c.bg_dark },
+      St_GitChange            = { fg = c.orange, bg = c.bg_dark },
+      St_GitRemove            = { fg = c.git.delete, bg = c.bg_dark },
+      St_lspError             = { fg = c.error, bg = c.bg_dark },
+      St_lspWarning           = { fg = c.warning, bg = c.bg_dark },
+      St_lspHints             = { fg = c.hint, bg = c.bg_dark },
+      St_lspInfo              = { fg = c.info, bg = c.bg_dark },
+      St_lspStatus            = { fg = c.fg, bg = c.bg_dark, bold = true },
       St_PositionSeparator    = { fg = c.green },
       St_PositionIcon         = { fg = c.bg_dark, bg = c.green },
-      St_PositionText         = { fg = c.green },
+      St_PositionText         = { fg = c.green, bg = c.bg_dark },
       St_DirectorySeparator   = { fg = c.red },
       St_DirectoryIcon        = { fg = c.bg_dark, bg = c.red },
       St_DirectoryText        = { fg = c.red },
@@ -129,6 +129,9 @@ catppuccin.setup({
       CheatsheetHeaderCyan    = { fg = c.bg, bg = c.cyan },
       CheatsheetHeaderPurple  = { fg = c.bg, bg = c.purple },
       CheatsheetSection       = { fg = c.fg, bg = c.bg_highlight },
+
+      -- Flash
+      FlashLabel              = { fg = c.bg_dark, bg = c.purple, bold = true },
 
       -- Telescope
       TelescopeBorder         = { fg = c.bg_dark, bg = c.bg_dark, },

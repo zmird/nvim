@@ -56,26 +56,6 @@ M.modes = {
 }
 
 M.mode = function()
-  -- local m = vim.api.nvim_get_mode()
-  -- if not utils.contains(m, "mode") then
-  --   return "%#St_NormalMode#▊"
-  -- end
-
-  -- return "%#" .. M.modes[m.mode][2] .. "#▊"
-  
-  -- local get_mode = function()
-  --   local m = vim.fn.mode() or "n"
-  --   return "%#" .. M.modes[m][2] .. "#▊"
-  -- end
-  --
-  -- local ok, mode = pcall(get_mode)
-  -- if not ok then
-  --   print("error:", vim.fn.mode())
-  --   return "%#St_NormalMode#▊"
-  -- end
-  --
-  -- return mode
-  
   return "%#" .. M.modes[vim.fn.mode()][2] .. "#▊"
 end
 
@@ -85,7 +65,7 @@ M.fileInfo = function()
   end
 
   local filename = utils.get_relative_fname()
-  return "%#St_Filename# " ..  filename .. " "
+  return "%#St_Filename# " ..  filename .. " %#St_Text#"
 end
 
 M.gitbranch = function()
