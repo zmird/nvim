@@ -25,6 +25,10 @@ vim.api.nvim_create_user_command("EditConfig", function()
   require("user.utils").edit_config()
 end, {})
 
+vim.api.nvim_create_user_command("SetAnsibleFiletype", function()
+  require("user.utils").set_ansible_filetype()
+end, {})
+
 ----- Plugins -----
 
 require("user.lazy")

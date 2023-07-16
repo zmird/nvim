@@ -19,7 +19,7 @@ null_ls.setup {
 
     -- Diagnostics
     diagnostics.flake8,
-    diagnostics.ansiblelint,
+    -- diagnostics.ansiblelint,
     -- diagnostics.golangci_lint,
 
     -- Code actions

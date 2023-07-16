@@ -64,8 +64,7 @@ M.fileInfo = function()
     return ""
   end
 
-  local filename = utils.get_relative_fname()
-  return "%#St_Filename# " ..  filename .. " %#St_Text#"
+  return (utils.get_relative_fname() ~= "") and ("%#St_Filename# " .. utils.get_relative_fname() .. " %#St_Text#") or ""
 end
 
 M.gitbranch = function()

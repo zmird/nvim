@@ -80,7 +80,7 @@ catppuccin.setup({
       DashboardButtons    = { fg = c.fg, bg = c.bg },
 
       -- Tabline
-      -- Tabline             = { fg = c.blue, bg = c.red },
+      Tabline                 = { fg = c.fg, bg = c.bg_dark },
       TabLineFill             = { bg = c.bg_dark },
       TablineBufOn            = { fg = c.fg, bg = c.bg },
       TablineBufOff           = { fg = c.fg_dimmed, bg = c.bg_dark },

@@ -147,12 +147,12 @@ M.lspconfig = {
       "LSP hover",
     },
 
-    ["<C-K>"] = {
-      function()
-        vim.lsp.buf.signature_help()
-      end,
-      "LSP signature help",
-    },
+    -- ["<C-K>"] = {
+    --   function()
+    --     vim.lsp.buf.signature_help()
+    --   end,
+    --   "LSP signature help",
+    -- },
 
     ["<leader>D"] = {
       function()

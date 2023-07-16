@@ -162,7 +162,7 @@ M.open = function()
   end
 
   -- move cursor out of the way
-  vim.cmd("normal! G")
+  vim.cmd("normal! k")
 
   -- buf only options
   vim.opt_local.buflisted = false

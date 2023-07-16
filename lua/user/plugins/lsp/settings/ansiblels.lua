@@ -6,7 +6,7 @@ return {
         useFullyQualifiedCollectionNames = false,
       },
       ansibleLint = {
-        enabled = true,
+        enabled = false,
         path = "ansible-lint",
         arguments = "-c$HOME/.config/ansible-lint/config.yml",
       },

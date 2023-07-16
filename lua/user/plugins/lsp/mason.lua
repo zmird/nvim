@@ -112,7 +112,8 @@ local servers = {
   "lua_ls",
   "gopls",
   "clangd",
-  "pyright"
+  "pyright",
+  "ansiblels"
 }
 
 mason_lspconfig.setup {
@@ -120,7 +121,8 @@ mason_lspconfig.setup {
     "lua_ls",
     "gopls",
     "clangd",
-    "pyright"
+    "pyright",
+    "ansiblels"
   },
   automatic_installed = true,
 }

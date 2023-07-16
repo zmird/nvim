@@ -36,14 +36,9 @@ M.edit_config = function()
   vim.cmd("NeoTreeShowToggle")
 end
 
--- M.load_modules = function(modules)
---   for _, module in ipairs(modules) do
---     local ok, err = pcall(require, module)
---     if not ok then
---       error("Error loading " .. module .. "\n\n" .. err)
---     end
---   end
--- end
+M.set_ansible_filetype = function()
+  vim.cmd("set filetype=yaml.ansible")
+end
 
 -- Copy a table into another
 -- @param source Source Table
