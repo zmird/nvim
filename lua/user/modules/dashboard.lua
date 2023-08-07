@@ -161,8 +161,11 @@ M.open = function()
     end, { buffer = 0 })
   end
 
+  -- Hide cursor with highlighting
+  api.nvim_buf_add_highlight(buf, namespace, "Cursor", 0, 0, 0)
+
   -- move cursor out of the way
-  vim.cmd("normal! k")
+  vim.cmd("normal! G")
 
   -- buf only options
   vim.opt_local.buflisted = false
@@ -173,6 +176,7 @@ M.open = function()
   vim.opt_local.wrap = false
   vim.opt_local.cul = false
   vim.opt_local.cursorline = false
+  vim.opt_local.cursorcolumn = false
 end
 
 return M

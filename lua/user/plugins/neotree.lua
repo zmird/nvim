@@ -17,10 +17,10 @@ end
 vim.g.neo_tree_remove_legacy_commands = 1
 
 -- If you want icons for diagnostic errors, you'll need to define them somewhere:
-vim.fn.sign_define("DiagnosticSignError", {text = icons.error .. " ", texthl = "DiagnosticSignError"})
-vim.fn.sign_define("DiagnosticSignWarn", {text = icons.warningTriangle .. " ", texthl = "DiagnosticSignWarn"})
-vim.fn.sign_define("DiagnosticSignInfo", {text = icons.info .. " ", texthl = "DiagnosticSignInfo"})
-vim.fn.sign_define("DiagnosticSignHint", {text = icons.lightbulb, texthl = "DiagnosticSignHint"})
+vim.fn.sign_define("DiagnosticSignError", {text = icons.error           .. " ", texthl = "DiagnosticSignError"})
+vim.fn.sign_define("DiagnosticSignWarn",  {text = icons.warningTriangle .. " ", texthl = "DiagnosticSignWarn"})
+vim.fn.sign_define("DiagnosticSignInfo",  {text = icons.info            .. " ", texthl = "DiagnosticSignInfo"})
+vim.fn.sign_define("DiagnosticSignHint",  {text = icons.lightbulb             , texthl = "DiagnosticSignHint"})
 
 -- NOTE: this is changed from v1.x, which used the old style of highlight groups
 -- in the form "LspDiagnosticsSignWarning"
@@ -28,9 +28,6 @@ vim.fn.sign_define("DiagnosticSignHint", {text = icons.lightbulb, texthl = "Diag
 tree.setup(
   {
   close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
-  -- popup_border_style is for input and confirmation dialogs.
-  -- Configurtaion of floating window is done in the individual source sections.
-  -- "NC" is a special style that works well with NormalNC set
   close_floats_on_escape_key = true,
   default_source = "filesystem",
   enable_diagnostics = true,
@@ -55,55 +52,6 @@ tree.setup(
   sort_case_insensitive = false, -- used when sorting files and directories in the tree
   use_popups_for_input = true, -- If false, inputs will use vim.ui.input() instead of custom floats.
   use_default_mappings = true,
-  --
-  --event_handlers = {
-  --  {
-  --    event = "before_render",
-  --    handler = function (state)
-  --      -- add something to the state that can be used by custom components
-  --    end
-  --  },
-  --  {
-  --    event = "file_opened",
-  --    handler = function(file_path)
-  --      --auto close
-  --      require("neo-tree").close_all()
-  --    end
-  --  },
-  --  {
-  --    event = "file_opened",
-  --    handler = function(file_path)
-  --      --clear search after opening a file
-  --      require("neo-tree.sources.filesystem").reset_search()
-  --    end
-  --  },
-  --  {
-  --    event = "file_renamed",
-  --    handler = function(args)
-  --      -- fix references to file
-  --      print(args.source, " renamed to ", args.destination)
-  --    end
-  --  },
-  --  {
-  --    event = "file_moved",
-  --    handler = function(args)
-  --      -- fix references to file
-  --      print(args.source, " moved to ", args.destination)
-  --    end
-  --  },
-  --  {
-  --    event = "neo_tree_buffer_enter",
-  --    handler = function()
-  --      vim.cmd 'highlight! Cursor blend=100'
-  --    end
-  --  },
-  --  {
-  --    event = "neo_tree_buffer_leave",
-  --    handler = function()
-  --      vim.cmd 'highlight! Cursor guibg=#5f87af blend=0'
-  --    end
-  --  }
-  --},
   default_component_configs = {
     container = {
       enable_character_fade = true
@@ -112,7 +60,7 @@ tree.setup(
       indent_size = 2,
       padding = 1,
       -- indent guides
-      with_markers = true,
+      with_markers = false,
       indent_marker = "│",
       last_indent_marker = "└",
       highlight = "NeoTreeIndentMarker",
@@ -165,16 +113,9 @@ tree.setup(
         "container",
         width = "100%",
         right_padding = 1,
-        --max_width = 60,
         content = {
           { "name", zindex = 10 },
-          -- {
-          --   "symlink_target",
-          --   zindex = 10,
-          --   highlight = "NeoTreeSymbolicLinkTarget",
-          -- },
           { "clipboard", zindex = 10 },
-          { "diagnostics", errors_only = true, zindex = 20, align = "right" },
         },
       },
     },
@@ -185,7 +126,6 @@ tree.setup(
         "container",
         width = "100%",
         right_padding = 1,
-        --max_width = 60,
         content = {
           { "git_status", zindex = 20, align = "left" },
           {
@@ -193,15 +133,7 @@ tree.setup(
             use_git_status_colors = true,
             zindex = 10
           },
-          -- {
-          --   "symlink_target",
-          --   zindex = 10,
-          --   highlight = "NeoTreeSymbolicLinkTarget",
-          -- },
-          -- { "clipboard", zindex = 10 },
-          -- { "bufnr", zindex = 10 },
-          -- { "modified", zindex = 20, align = "right" },
-          { "diagnostics",  zindex = 20, align = "right" },
+          { "diagnostics", errors_only = true, zindex = 20, align = "right" },
         },
       },
     },
@@ -332,34 +264,6 @@ tree.setup(
                                       -- search with space as an implicit ".*", so
                                       -- `fi init`
                                       -- will match: `./sources/filesystem/init.lua
-    --find_command = "fd", -- this is determined automatically, you probably don't need to set it
-    --find_args = {  -- you can specify extra args to pass to the find command.
-    --  fd = {
-      --  "--exclude", ".git",
-      --  "--exclude",  "node_modules"
-    --  }
-    --},
-    ---- or use a function instead of list of strings
-    --find_args = function(cmd, path, search_term, args)
-    --  if cmd ~= "fd" then
-    --    return args
-    --  end
-    --  --maybe you want to force the filter to always include hidden files:
-    --  table.insert(args, "--hidden")
-    --  -- but no one ever wants to see .git files
-    --  table.insert(args, "--exclude")
-    --  table.insert(args, ".git")
-    --  -- or node_modules
-    --  table.insert(args, "--exclude")
-    --  table.insert(args, "node_modules")
-    --  --here is where it pays to use the function, you can exclude more for
-    --  --short search terms, or vary based on the directory
-    --  if string.len(search_term) < 4 and path == "/home/cseickel" then
-    --    table.insert(args, "--exclude")
-    --    table.insert(args, "Library")
-    --  end
-    --  return args
-    --end,
     group_empty_dirs = false, -- when true, empty folders will be grouped together
     search_limit = 50, -- max number of search results when using filters
     follow_current_file = false, -- This will find and focus the file in the active buffer every time
