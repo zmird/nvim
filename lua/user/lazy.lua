@@ -177,14 +177,11 @@ local plugins = {
     "nvim-lua/plenary.nvim",
     lazy = false,
   },
-  -- {
-  --   "nathom/filetype.nvim",
-  --   lazy = true,
-  -- },
 
   -- Treesitter
   {
     "nvim-treesitter/nvim-treesitter",
+    event = "BufRead",
     build = function ()
       pcall(vim.cmd, ":TSUpdate")
     end,

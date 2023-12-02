@@ -64,20 +64,6 @@ M.tabline = {
       "Goto prev buffer",
     },
 
-    ["<C-o>"] = {
-      function()
-        require("user.modules.tabline").next()
-      end,
-      "Goto next buffer",
-    },
-
-    ["<C-i>"] = {
-      function()
-        require("user.modules.tabline").prev()
-      end,
-      "Goto prev buffer",
-    },
-
     -- close buffer + hide terminal buffer
     ["<C-x>"] = {
       function()
