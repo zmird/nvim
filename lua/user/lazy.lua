@@ -177,10 +177,10 @@ local plugins = {
     "nvim-lua/plenary.nvim",
     lazy = false,
   },
-  {
-    "nathom/filetype.nvim",
-    lazy = true,
-  },
+  -- {
+  --   "nathom/filetype.nvim",
+  --   lazy = true,
+  -- },
 
   -- Treesitter
   {
@@ -313,6 +313,7 @@ local plugins = {
   },
   {
     "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
     event = "BufRead",
     config = function ()
       require "user.plugins.indent"
@@ -402,10 +403,9 @@ local plugins = {
   {
     "nvim-neo-tree/neo-tree.nvim",
     cmd = {
-      "NeoTreeFocusToggle",
-      "NeoTreeShowToggle",
+      "Neotree",
     },
-    branch = "v2.x",
+    branch = "v3.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons",

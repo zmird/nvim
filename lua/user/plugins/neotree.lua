@@ -28,7 +28,7 @@ vim.fn.sign_define("DiagnosticSignHint",  {text = icons.lightbulb             , 
 tree.setup(
   {
   close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
-  close_floats_on_escape_key = true,
+  -- close_floats_on_escape_key = true,
   default_source = "filesystem",
   enable_diagnostics = true,
   enable_git_status = true,
@@ -266,8 +266,10 @@ tree.setup(
                                       -- will match: `./sources/filesystem/init.lua
     group_empty_dirs = false, -- when true, empty folders will be grouped together
     search_limit = 50, -- max number of search results when using filters
-    follow_current_file = false, -- This will find and focus the file in the active buffer every time
+    follow_current_file = { -- This will find and focus the file in the active buffer every time
                                  -- the current file is changed while the tree is open.
+      enabled = true
+    },
     hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
                                             -- in whatever position is specified in window.position
                           -- "open_current",-- netrw disabled, opening a directory opens within the
@@ -278,7 +280,9 @@ tree.setup(
   },
   buffers = {
     bind_to_cwd = true,
-    follow_current_file = true, -- This will find and focus the file in the active buffer every time
+    follow_current_file = {  -- This will find and focus the file in the active buffer every time
+      enabled = true
+    },
                                 -- the current file is changed while the tree is open.
     group_empty_dirs = true, -- when true, empty directories will be grouped together
     window = {

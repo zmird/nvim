@@ -1,4 +1,4 @@
-local indent_status_ok, indent = pcall(require, "indent_blankline")
+local indent_status_ok, indent = pcall(require, "ibl")
 if not indent_status_ok then
   return
 end
@@ -10,33 +10,54 @@ vim.opt.listchars = {
 }
 
 indent.setup {
-  char = "|",
-  buftype_exclude = {
-    "nofile",
-    "terminal",
-    "TelescopePrompt"
+  scope = {
+    enabled = false,
+    highlight = {
+        "CursorColumn",
+        "Whitespace",
+    },
   },
-  filetype_exclude = {
-    "noice",
-    "help",
-    "alpha",
-    "neo-tree",
-    "neo-tree-popup",
-    "packer",
-    "lsp-installer",
-    "NvimTree",
-    "Trouble",
-    "TelescopePrompt",
-    "LspsagaCodeAction",
-    "LspsagaDiagnostics",
-    "LspsagaFinder",
-    "LspsagaFloaterm",
-    "LspsagaHover",
-    "LspsagaRename",
-    "LspsagaSignatureHelp",
+  indent = {
+    char = "|",
+    -- highlight = {
+    --     "CursorColumn",
+    --     "Whitespace",
+    -- },
   },
-  space_char_blankline = " ",
-  show_current_context = true,
-  show_end_of_line = true,
-  use_treesitter = true,
+  whitespace = {
+    highlight = {
+        -- "CursorColumn",
+        "Whitespace",
+    },
+  },
+  -- space_char_blankline = " ",
+  -- show_current_context = true,
+  -- show_end_of_line = true,
+  -- use_treesitter = true,
+  exclude = {
+    buftypes = {
+      "nofile",
+      "terminal",
+      "TelescopePrompt"
+    },
+    filetypes = {
+      "noice",
+      "help",
+      "alpha",
+      "neo-tree",
+      "neo-tree-popup",
+      "packer",
+      "lsp-installer",
+      "NvimTree",
+      "Trouble",
+      "TelescopePrompt",
+      "LspsagaCodeAction",
+      "LspsagaDiagnostics",
+      "LspsagaFinder",
+      "LspsagaFloaterm",
+      "LspsagaHover",
+      "LspsagaRename",
+      "LspsagaSignatureHelp",
+    },
+  },
 }

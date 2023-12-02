@@ -168,6 +168,13 @@ M.lspconfig = {
       "LSP rename",
     },
 
+    ["mm"] = {
+      function()
+        vim.lsp.buf.format()
+      end,
+      "LSP format",
+    },
+
     ["<C-a>"] = {
       function()
         vim.lsp.buf.code_action()
@@ -229,10 +236,10 @@ M.lspconfig = {
 M.neotree = {
   n = {
     -- toggle
-    ["<C-g>"] = { "<cmd> NeoTreeFocusToggle <CR>", "Toggle neotree" },
+    ["<C-g>"] = { "<cmd> Neotree toggle <CR>", "Toggle neotree" },
 
     -- focus
-    ["<leader>e"] = { "<cmd> NeoTreeFocus <CR>", "Focus neotree" },
+    ["<leader>e"] = { "<cmd> Neotree toggle <CR>", "Focus neotree" },
   },
 }
 
