@@ -6,12 +6,12 @@ return {
         useFullyQualifiedCollectionNames = false,
       },
       ansibleLint = {
-        enabled = false,
+        enabled = true,
         path = "ansible-lint",
         arguments = "-c$HOME/.config/ansible-lint/config.yml",
       },
       executionEnvironment = {
-        enabled = false
+        enabled = true
       },
       python = {
         interpreterPath = "python3"
