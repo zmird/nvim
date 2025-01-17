@@ -1,15 +1,18 @@
 local cmp_status_ok, cmp = pcall(require, "cmp")
 if not cmp_status_ok then
+  print("cmp not ok")
   return
 end
 
 local snip_status_ok, luasnip = pcall(require, "luasnip")
 if not snip_status_ok then
+  print("luasnip not ok")
   return
 end
 
 local icons_status_ok, icons = pcall(require, "user.icons")
 if not icons_status_ok then
+  print("icons not ok")
   return
 end
 
@@ -125,13 +128,13 @@ cmp.setup {
     fields = {"abbr", "kind", "menu" },
     format = function(entry, item)
       -- print(entry.source.name)
-      local icon = entry.source.name == "copilot" and icons.copilot or kind_icons[item.kind]
+      -- local icon = entry.source.name == "copilot" and icons.copilot or kind_icons[item.kind]
+      local icon = kind_icons[item.kind]
       item.kind = string.format("%s %s", icon, item.kind)
       return item
     end,
   },
   sources = {
-    { name = "copilot", group_index = 2 },
     { name = "nvim_lsp", group_index = 2, priority = 100 },
     { name = "nvim_lsp_signature_help", group_index = 2},
     { name = "nvim_lua", group_index = 2 },
@@ -175,7 +178,7 @@ cmp.setup {
   sorting = {
     priority_weight = 2,
     comparators = {
-      require("copilot_cmp.comparators").prioritize,
+      -- require("copilot_cmp.comparators").prioritize,
 
       -- Below is the default comparitor list and order for nvim-cmp
       cmp.config.compare.offset,

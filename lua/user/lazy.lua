@@ -187,7 +187,8 @@ local plugins = {
     end,
     config = function ()
       require "user.plugins.treesitter"
-    end
+    end,
+    lazy = false
   },
 
   -- LSP
@@ -235,13 +236,6 @@ local plugins = {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-nvim-lsp-signature-help",
-      "saadparwaiz1/cmp_luasnip",
-      {
-        "zbirenbaum/copilot-cmp",
-        config = function ()
-          require("copilot_cmp").setup()
-        end
-      }
     },
     config = function ()
       require("user.plugins.cmp")
