@@ -64,20 +64,6 @@ M.tabline = {
       "Goto prev buffer",
     },
 
-    ["<C-o>"] = {
-      function()
-        require("user.modules.tabline").next()
-      end,
-      "Goto next buffer",
-    },
-
-    ["<C-i>"] = {
-      function()
-        require("user.modules.tabline").prev()
-      end,
-      "Goto prev buffer",
-    },
-
     -- close buffer + hide terminal buffer
     ["<C-x>"] = {
       function()
@@ -168,6 +154,13 @@ M.lspconfig = {
       "LSP rename",
     },
 
+    ["mm"] = {
+      function()
+        vim.lsp.buf.format()
+      end,
+      "LSP format",
+    },
+
     ["<C-a>"] = {
       function()
         vim.lsp.buf.code_action()
@@ -229,10 +222,10 @@ M.lspconfig = {
 M.neotree = {
   n = {
     -- toggle
-    ["<C-g>"] = { "<cmd> NeoTreeFocusToggle <CR>", "Toggle neotree" },
+    ["<C-g>"] = { "<cmd> Neotree toggle <CR>", "Toggle neotree" },
 
     -- focus
-    ["<leader>e"] = { "<cmd> NeoTreeFocus <CR>", "Focus neotree" },
+    ["<leader>e"] = { "<cmd> Neotree toggle <CR>", "Focus neotree" },
   },
 }
 
@@ -341,7 +334,13 @@ M.ufo = {
 
 M.symbols = {
   n = {
-    ["tt"] = { "<cmd> SymbolsOutline<CR>", "Toggle symbols outline"}
+    ["gs"] = { "<cmd>SymbolsOutline<CR>", "Toggle symbols outline"}
+  }
+}
+
+M.trouble = {
+  n = {
+    ["tt"] = { "<cmd>TroubleToggle<CR>", "Toggle trouble"}
   }
 }
 

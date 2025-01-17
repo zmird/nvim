@@ -33,7 +33,7 @@ end
 M.edit_config = function()
   vim.api.nvim_set_current_dir("~/.config/nvim")
   vim.cmd("e ~/.config/nvim/lua/user/lazy.lua")
-  vim.cmd("NeoTreeShowToggle")
+  vim.cmd("Neotree show")
 end
 
 M.set_ansible_filetype = function()
