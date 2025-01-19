@@ -33,6 +33,7 @@ local config = {
   buttons = {
     { icons.folderOpen  .. "  Projects", "p", "Telescope projects" },
     { icons.textFile    .. "  New Buffer", "e", "enew" },
+    { icons.keys2       .. "  Cheetsheet", "m", "Cheatsheet" },
     { icons.cog         .. "  Config", "c", "EditConfig" },
     { icons.container   .. "  Lazy", "l", "Lazy" },
     { icons.quit        .. "  Quit", "q", "qa" },
