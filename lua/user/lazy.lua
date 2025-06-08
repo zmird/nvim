@@ -204,9 +204,9 @@ local plugins = {
         }
       },
       {
-        "simrat39/symbols-outline.nvim",
+        "hedyhli/outline.nvim",
         config = function ()
-          require "user.plugins.symbols"
+          require "user.plugins.outline"
         end,
       },
       {
@@ -231,7 +231,7 @@ local plugins = {
     },
     dependencies = {
       "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
+      -- "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-nvim-lua",
