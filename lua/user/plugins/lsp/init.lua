@@ -5,5 +5,5 @@ end
 
 require("user.plugins.lsp.mason")
 require("user.plugins.lsp.handlers").setup()
-require("user.plugins.lsp.null_ls")
+-- require("user.plugins.lsp.null_ls")
 require("user.plugins.lsp.trouble")

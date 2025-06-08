@@ -1,4 +1,3 @@
--- Close buffer without closing the window
 local M = {}
 
 -- Load Mappings

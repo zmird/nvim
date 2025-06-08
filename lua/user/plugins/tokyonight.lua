@@ -341,5 +341,25 @@ tokyonight.setup({
     hl.CmpItemKindTypeParameter = {
       fg = c.orange
     }
+
+    -- Git Signs Hightlights
+    hl.GitSignsAdd = {
+      fg = c.git.add,
+      bold = true
+    }
+    hl.GitSignsChange = {
+      fg = c.git.change,
+      bold = true
+    }
+    hl.GitSignsDelete = {
+      fg = c.git.delete,
+      bold = true
+    }
+    hl.GitSignsTopdelete = {
+      link = hl.GitSignsDelete
+    }
+    hl.GitSignsChangedelete = {
+      link = hl.GitSignsChange
+    }
   end,
 })

@@ -119,7 +119,7 @@ end
 
 M.LSP_status = function()
   if rawget(vim, "lsp") then
-    for _, client in ipairs(vim.lsp.get_active_clients()) do
+    for _, client in ipairs(vim.lsp.get_clients()) do
       if client.attached_buffers[vim.api.nvim_get_current_buf()] and client.name ~= "null-ls"  and client.name ~= "copilot" then
         return (vim.o.columns > 100 and "%#St_lspStatus#  " .. icons.gears .. " " .. client.name .. "  ") or ""
       end
@@ -150,7 +150,7 @@ M.file_encoding = function()
 end
 
 M.working_directory = function ()
-  local left_sep = "%#St_DirectorySeparator#" .. "█" .. "%#St_DirectoryIcon#" .. icons.folderOpen2 .. " "
+  local left_sep = "%#St_DirectorySeparator#" .. "█" .. "%#St_DirectoryIcon#" .. icons.folderOpenOutline .. " "
   local cwd = utils.basename(vim.loop.cwd())
   return left_sep .. "%#St_DirectoryText#" .. " " .. cwd .. " "
 end

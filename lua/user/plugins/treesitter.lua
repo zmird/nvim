@@ -6,7 +6,7 @@ end
 treesitter.setup {
 	ensure_installed = {"bash", "c", "cpp", "css", "dart", "go", "gomod", "html", "java",
 		"javascript", "json", "markdown", "markdown_inline", "org",
-		"regex", "rust", "scss", "tsx", "typescript", "python", "vim", "yaml"},
+		"regex", "rust", "scss", "terraform", "tsx", "typescript", "python", "vim", "yaml"},
   sync_install = false, 
   ignore_install = {"help" }, -- List of parsers to ignore installing
   highlight = {

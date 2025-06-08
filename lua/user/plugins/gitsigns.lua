@@ -11,6 +11,13 @@ gitsigns.setup {
   --   topdelete    = { hl = "GitSignsDelete", text = "", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
   --   changedelete = { hl = "GitSignsChange", text = "▎", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
   -- },
+  signs = {
+    add          = { text = "▎" },
+    change       = { text = "▎" },
+    delete       = { text = "" },
+    topdelete    = { text = "" },
+    changedelete = { text = "▎" },
+  },
   signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
   numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
   linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
@@ -59,3 +66,23 @@ gitsigns.setup {
   --   enable = false
   -- },
 }
+
+-- Highlighting
+
+-- vim.api.nvim_set_hl(0, 'GitSignsAdd',          { link = 'GitSignsAdd'   , fg = "#00FF00", bold = true })
+-- vim.api.nvim_set_hl(0, 'GitSignsChange',       { link = 'GitSignsChange', fg = "#FFFF00", bold = true  })
+-- vim.api.nvim_set_hl(0, 'GitSignsDelete',       { link = 'GitSignsDelete', fg = "#FF0000", bold = true  })
+vim.api.nvim_set_hl(0, 'GitSignsTopdelete',    { link = 'GitSignsDelete' })
+vim.api.nvim_set_hl(0, 'GitSignsChangedelete', { link = 'GitSignsChange' })
+
+vim.api.nvim_set_hl(0, 'GitSignsAddNr',          { link = 'GitSignsAdd'      })
+vim.api.nvim_set_hl(0, 'GitSignsChangeNr',       { link = 'GitSignsChange'   })
+vim.api.nvim_set_hl(0, 'GitSignsDeleteNr',       { link = 'GitSignsDelete'   })
+vim.api.nvim_set_hl(0, 'GitSignsTopdeleteNr',    { link = 'GitSignsDeleteNr' })
+vim.api.nvim_set_hl(0, 'GitSignsChangedeleteNr', { link = 'GitSignsChangeNr' })
+
+vim.api.nvim_set_hl(0, 'GitSignsAddLn',          { link = 'GitSignsAdd'      })
+vim.api.nvim_set_hl(0, 'GitSignsChangeLn',       { link = 'GitSignsChange'   })
+vim.api.nvim_set_hl(0, 'GitSignsDeleteLn',       { link = 'GitSignsDelete'   })
+vim.api.nvim_set_hl(0, 'GitSignsTopdeleteLn',    { link = 'GitSignsDeleteLn' })
+vim.api.nvim_set_hl(0, 'GitSignsChangedeleteLn', { link = 'GitSignsChangeLn' })

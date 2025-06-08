@@ -31,12 +31,12 @@ local config = {
   header = {},
 
   buttons = {
-    { icons.folderOpen  .. "  Projects", "p", "Telescope projects" },
-    { icons.textFile    .. "  New Buffer", "e", "enew" },
-    { icons.keys2       .. "  Cheetsheet", "m", "Cheatsheet" },
-    { icons.cog         .. "  Config", "c", "EditConfig" },
-    { icons.container   .. "  Lazy", "l", "Lazy" },
-    { icons.quit        .. "  Quit", "q", "qa" },
+    { icons.folderOpenOutline  .. "  Open", "o", "SelectAndOpen" },
+    { icons.textFileNoBg       .. "  New Buffer", "e", "enew" },
+    { icons.keys2              .. "  Cheetsheet", "m", "Cheatsheet" },
+    { icons.cogOutline         .. "  Config", "c", "EditConfig" },
+    { icons.container          .. "  Lazy", "l", "Lazy" },
+    { icons.quit               .. "  Quit", "q", "qa" },
   },
 }
 

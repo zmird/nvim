@@ -215,7 +215,7 @@ local plugins = {
           "nvim-tree/nvim-web-devicons",
         }
       },
-      "jose-elias-alvarez/null-ls.nvim",
+      "nvimtools/none-ls.nvim",
       "j-hui/fidget.nvim",
     },
     config = function ()
@@ -248,6 +248,9 @@ local plugins = {
     event = "InsertEnter",
     dependencies = {
       "rafamadriz/friendly-snippets",
+    },
+    run = {
+      "make install_jsregexp"
     }
   },
 
@@ -340,7 +343,7 @@ local plugins = {
     end
   },
   {
-    "ahmedkhalf/project.nvim",
+    "Spelis/project.nvim",
     config = function()
       require("project_nvim").setup{}
     end
