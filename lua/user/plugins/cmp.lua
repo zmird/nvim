@@ -4,11 +4,11 @@ if not cmp_status_ok then
   return
 end
 
-local snip_status_ok, luasnip = pcall(require, "luasnip")
-if not snip_status_ok then
-  print("luasnip not ok")
-  return
-end
+-- local snip_status_ok, luasnip = pcall(require, "luasnip")
+-- if not snip_status_ok then
+--   print("luasnip not ok")
+--   return
+-- end
 
 local icons_status_ok, icons = pcall(require, "user.icons")
 if not icons_status_ok then
@@ -16,7 +16,7 @@ if not icons_status_ok then
   return
 end
 
-require("luasnip/loaders/from_vscode").lazy_load()
+-- require("luasnip/loaders/from_vscode").lazy_load()
 
 local check_backspace = function()
   local col = vim.fn.col "." - 1
@@ -73,11 +73,11 @@ local kind_icons = {
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 
 cmp.setup {
-  snippet = {
-    expand = function(args)
-      luasnip.lsp_expand(args.body) -- For `luasnip` users.
-    end,
-  },
+  -- snippet = {
+  --   expand = function(args)
+  --     luasnip.lsp_expand(args.body) -- For `luasnip` users.
+  --   end,
+  -- },
   mapping = {
     ["<C-k>"] = cmp.mapping.select_prev_item(),
 		["<C-j>"] = cmp.mapping.select_next_item(),
@@ -98,10 +98,6 @@ cmp.setup {
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() and has_words_before() then
         cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-      elseif luasnip.expandable() then
-        luasnip.expand()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
       elseif check_backspace() then
         fallback()
       else
@@ -114,8 +110,6 @@ cmp.setup {
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() and has_words_before() then
         cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
       else
         fallback()
       end
@@ -138,7 +132,6 @@ cmp.setup {
     { name = "nvim_lsp", group_index = 2, priority = 100 },
     { name = "nvim_lsp_signature_help", group_index = 2},
     { name = "nvim_lua", group_index = 2 },
-    { name = "luasnip", group_index = 2 },
     { name = "buffer", group_index = 2 },
     { name = "path", group_index = 2 },
   },
@@ -178,8 +171,6 @@ cmp.setup {
   sorting = {
     priority_weight = 2,
     comparators = {
-      -- require("copilot_cmp.comparators").prioritize,
-
       -- Below is the default comparitor list and order for nvim-cmp
       cmp.config.compare.offset,
       cmp.config.compare.exact,

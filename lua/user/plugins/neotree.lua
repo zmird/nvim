@@ -16,12 +16,6 @@ end
 
 vim.g.neo_tree_remove_legacy_commands = 1
 
--- If you want icons for diagnostic errors, you'll need to define them somewhere:
-vim.fn.sign_define("DiagnosticSignError", {text = icons.error           .. " ", texthl = "DiagnosticSignError"})
-vim.fn.sign_define("DiagnosticSignWarn",  {text = icons.warningTriangle .. " ", texthl = "DiagnosticSignWarn"})
-vim.fn.sign_define("DiagnosticSignInfo",  {text = icons.info            .. " ", texthl = "DiagnosticSignInfo"})
-vim.fn.sign_define("DiagnosticSignHint",  {text = icons.lightbulb             , texthl = "DiagnosticSignHint"})
-
 -- NOTE: this is changed from v1.x, which used the old style of highlight groups
 -- in the form "LspDiagnosticsSignWarning"
 
@@ -103,6 +97,21 @@ tree.setup(
         conflict  = icons.merge,
       },
     },
+    diagnostics = {
+      symbols = {
+        error = icons.error,
+        warn = icons.warningTriangle,
+        info = icons.info,
+        hint = icons.lightbulb
+      },
+      highlights = {
+        error = "DiagnosticSignError",
+        warn = "DiagnosticSignWarn",
+        info = "DiagnosticSignInfo",
+        hint = "DiagnosticSignHint"
+      }
+
+    }
   },
   renderers = {
     directory = {
@@ -133,7 +142,7 @@ tree.setup(
             use_git_status_colors = true,
             zindex = 10
           },
-          { "diagnostics", errors_only = true, zindex = 20, align = "right" },
+          { "diagnostics", errors_only = false, zindex = 20, align = "right" },
         },
       },
     },

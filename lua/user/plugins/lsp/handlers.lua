@@ -1,17 +1,32 @@
 local M = {}
 
--- TODO: backfill this to template
 M.setup = function()
-  local signs = {
-    { name = "DiagnosticSignError", text = "" },
-    { name = "DiagnosticSignWarn", text = "" },
-    { name = "DiagnosticSignHint", text = "" },
-    { name = "DiagnosticSignInfo", text = "" },
-  }
 
-  for _, sign in ipairs(signs) do
-    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+  local icons_status_ok, icons = pcall(require, "user.icons")
+  if not icons_status_ok then
+    return
   end
+
+  local signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = icons.error,
+      [vim.diagnostic.severity.WARN] = icons.warningTriangle,
+      [vim.diagnostic.severity.INFO] = icons.info,
+      [vim.diagnostic.severity.HINT] = icons.lightbulb
+    },
+    texthl = {
+      [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+      [vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+      [vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+      [vim.diagnostic.severity.HINT] = "DiagnosticSignHint"
+    },
+    numhl = {
+      [vim.diagnostic.severity.ERROR] = "",
+      [vim.diagnostic.severity.WARN] = "",
+      [vim.diagnostic.severity.INFO] = "",
+      [vim.diagnostic.severity.HINT] = ""
+    }
+  }
 
   local config = {
     -- disable virtual text
@@ -57,7 +72,7 @@ M.setup = function()
   end
 end
 
-M.on_attach = function(client, bufnr)
+M.on_attach = function(client, _)
   -- Set autocommands conditional on server_capabilities
   if client.server_capabilities.document_highlight then
     vim.api.nvim_exec(
@@ -72,7 +87,7 @@ M.on_attach = function(client, bufnr)
     )
   end
 
-  if not client.supports_method "textDocument/semanticTokens" then
+  if not client:supports_method "textDocument/semanticTokens" then
     client.server_capabilities.semanticTokensProvider = nil
   end
 end

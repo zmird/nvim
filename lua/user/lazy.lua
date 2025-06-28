@@ -194,7 +194,7 @@ local plugins = {
   -- LSP
   {
     "neovim/nvim-lspconfig",
-    event = "BufRead",
+    event = "BufReadPre",
     priority = 1000,
     dependencies = {
       {
@@ -215,11 +215,23 @@ local plugins = {
           "nvim-tree/nvim-web-devicons",
         }
       },
-      "nvimtools/none-ls.nvim",
       "j-hui/fidget.nvim",
     },
     config = function ()
       require "user.plugins.lsp"
+    end
+  },
+  {
+    "nvimtools/none-ls.nvim",
+    config = function ()
+      local null_ls = require("null-ls")
+
+      null_ls.setup({
+        sources = {
+          -- null_ls.builtins.diagnostics.golangci_lint,
+          null_ls.builtins.formatting.gofumpt
+        },
+      })
     end
   },
   -- Completion
@@ -231,7 +243,7 @@ local plugins = {
     },
     dependencies = {
       "hrsh7th/cmp-buffer",
-      -- "hrsh7th/cmp-path",
+      "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-nvim-lua",
@@ -240,18 +252,6 @@ local plugins = {
     config = function ()
       require("user.plugins.cmp")
     end
-  },
-
-  -- Snippets
-  {
-    "L3MON4D3/LuaSnip",
-    event = "InsertEnter",
-    dependencies = {
-      "rafamadriz/friendly-snippets",
-    },
-    run = {
-      "make install_jsregexp"
-    }
   },
 
   -- Telescope
@@ -269,16 +269,6 @@ local plugins = {
         build = "make"
       },
     },
-  },
-  { 
-    "olexsmir/gopher.nvim",
-    ft = {"go", "gomod"},
-    config = function(_, opts)
-      require("gopher").setup(opts)
-    end,
-    build = function()
-      vim.cmd[[ silent! GoInstallDeps ]]
-    end
   },
 
   -- Code

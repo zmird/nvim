@@ -86,7 +86,7 @@ M.gitchanges = function()
       and ("%#St_GitAdd# " .. icons.gitAdd .. " " .. git_status.added .. " ")
     or ""
   local changed = (git_status.changed and git_status.changed ~= 0)
-      and ("%#St_GitChange# " .. icons.gitChange .. "" .. git_status.changed .. " ")
+      and ("%#St_GitChange# " .. icons.gitChange .. " " .. git_status.changed .. " ")
     or ""
   local removed = (git_status.removed and git_status.removed ~= 0)
       and ("%#St_GitRemove# " .. icons.gitRemove .. " " .. git_status.removed .. " ")
@@ -120,7 +120,7 @@ end
 M.LSP_status = function()
   if rawget(vim, "lsp") then
     for _, client in ipairs(vim.lsp.get_clients()) do
-      if client.attached_buffers[vim.api.nvim_get_current_buf()] and client.name ~= "null-ls"  and client.name ~= "copilot" then
+      if client.attached_buffers[vim.api.nvim_get_current_buf()] then
         return (vim.o.columns > 100 and "%#St_lspStatus#  " .. icons.gears .. " " .. client.name .. "  ") or ""
       end
     end

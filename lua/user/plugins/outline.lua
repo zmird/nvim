@@ -53,9 +53,7 @@ outline.setup({
     markers = { "", "" }
   },
   symbols = {
-    filter = {
-      exclude = true
-    },
+    filter = nil,
     icons = {
       array = {
         hl = "@constant",

@@ -334,13 +334,13 @@ M.ufo = {
 
 M.symbols = {
   n = {
-    ["gs"] = { "<cmd>SymbolsOutline<CR>", "Toggle symbols outline"}
+    ["gs"] = { "<cmd>Outline<CR>", "Toggle symbols outline"}
   }
 }
 
 M.trouble = {
   n = {
-    ["tt"] = { "<cmd>TroubleToggle<CR>", "Toggle trouble"}
+    ["tt"] = { "<cmd>Trouble diagnostics toggle<CR>", "Toggle trouble"}
   }
 }
 
