@@ -3,6 +3,26 @@ if not gitsigns_status_ok then
   return
 end
 
+-- Highlighting
+
+-- vim.api.nvim_set_hl(0, 'GitSignsAdd',          { link = 'GitSignsAdd'   , fg = "#00FF00", bold = true })
+-- vim.api.nvim_set_hl(0, 'GitSignsChange',       { link = 'GitSignsChange', fg = "#FFFF00", bold = true  })
+-- vim.api.nvim_set_hl(0, 'GitSignsDelete',       { link = 'GitSignsDelete', fg = "#FF0000", bold = true  })
+vim.api.nvim_set_hl(0, 'GitSignsTopdelete',    { link = 'GitSignsDelete' })
+vim.api.nvim_set_hl(0, 'GitSignsChangedelete', { link = 'GitSignsChange' })
+
+vim.api.nvim_set_hl(0, 'GitSignsAddNr',          { link = 'GitSignsAdd'      })
+vim.api.nvim_set_hl(0, 'GitSignsChangeNr',       { link = 'GitSignsChange'   })
+vim.api.nvim_set_hl(0, 'GitSignsDeleteNr',       { link = 'GitSignsDelete'   })
+vim.api.nvim_set_hl(0, 'GitSignsTopdeleteNr',    { link = 'GitSignsDeleteNr' })
+vim.api.nvim_set_hl(0, 'GitSignsChangedeleteNr', { link = 'GitSignsChangeNr' })
+
+vim.api.nvim_set_hl(0, 'GitSignsAddLn',          { link = 'GitSignsAdd'      })
+vim.api.nvim_set_hl(0, 'GitSignsChangeLn',       { link = 'GitSignsChange'   })
+vim.api.nvim_set_hl(0, 'GitSignsDeleteLn',       { link = 'GitSignsDelete'   })
+vim.api.nvim_set_hl(0, 'GitSignsTopdeleteLn',    { link = 'GitSignsDeleteLn' })
+vim.api.nvim_set_hl(0, 'GitSignsChangedeleteLn', { link = 'GitSignsChangeLn' })
+
 gitsigns.setup {
   -- signs = {
   --   add          = { hl = "GitSignsAdd",    text = "▎", numhl = "GitSignsAddNr",    linehl = "GitSignsAddLn"    },
@@ -50,7 +70,7 @@ gitsigns.setup {
   -- current_line_blame_formatter_opts = {
   --   relative_time = false
   -- },
-  sign_priority = 6,
+  sign_priority = 100,
   update_debounce = 100,
   status_formatter = nil, -- Use default
   max_file_length = 40000,
@@ -66,23 +86,3 @@ gitsigns.setup {
   --   enable = false
   -- },
 }
-
--- Highlighting
-
--- vim.api.nvim_set_hl(0, 'GitSignsAdd',          { link = 'GitSignsAdd'   , fg = "#00FF00", bold = true })
--- vim.api.nvim_set_hl(0, 'GitSignsChange',       { link = 'GitSignsChange', fg = "#FFFF00", bold = true  })
--- vim.api.nvim_set_hl(0, 'GitSignsDelete',       { link = 'GitSignsDelete', fg = "#FF0000", bold = true  })
-vim.api.nvim_set_hl(0, 'GitSignsTopdelete',    { link = 'GitSignsDelete' })
-vim.api.nvim_set_hl(0, 'GitSignsChangedelete', { link = 'GitSignsChange' })
-
-vim.api.nvim_set_hl(0, 'GitSignsAddNr',          { link = 'GitSignsAdd'      })
-vim.api.nvim_set_hl(0, 'GitSignsChangeNr',       { link = 'GitSignsChange'   })
-vim.api.nvim_set_hl(0, 'GitSignsDeleteNr',       { link = 'GitSignsDelete'   })
-vim.api.nvim_set_hl(0, 'GitSignsTopdeleteNr',    { link = 'GitSignsDeleteNr' })
-vim.api.nvim_set_hl(0, 'GitSignsChangedeleteNr', { link = 'GitSignsChangeNr' })
-
-vim.api.nvim_set_hl(0, 'GitSignsAddLn',          { link = 'GitSignsAdd'      })
-vim.api.nvim_set_hl(0, 'GitSignsChangeLn',       { link = 'GitSignsChange'   })
-vim.api.nvim_set_hl(0, 'GitSignsDeleteLn',       { link = 'GitSignsDelete'   })
-vim.api.nvim_set_hl(0, 'GitSignsTopdeleteLn',    { link = 'GitSignsDeleteLn' })
-vim.api.nvim_set_hl(0, 'GitSignsChangedeleteLn', { link = 'GitSignsChangeLn' })

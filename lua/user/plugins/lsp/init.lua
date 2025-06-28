@@ -1,12 +1,51 @@
-local status_ok, _ = pcall(require, "lspconfig")
-if not status_ok then
-	return
+local icons_status_ok, icons = pcall(require, "user.icons")
+if not icons_status_ok then
+  return
 end
+
+vim.diagnostic.config({
+  virtual_text = false,
+  virtual_lines = false,
+  update_in_insert = true,
+  underline = true,
+  severity_sort = true,
+  float = {
+    severity_sort = true,
+    focusable = false,
+    style = "minimal",
+    border = "rounded",
+    source = "if_many",
+    header = "",
+    prefix = "",
+  },
+  signs = {
+    active = true,
+    text = {
+      [vim.diagnostic.severity.ERROR] = icons.error,
+      [vim.diagnostic.severity.WARN]  = icons.warningTriangle,
+      [vim.diagnostic.severity.INFO]  = icons.info,
+      [vim.diagnostic.severity.HINT]  = icons.lightbulb
+    },
+    texthl = {
+      [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+      [vim.diagnostic.severity.WARN]  = "DiagnosticSignWarn",
+      [vim.diagnostic.severity.INFO]  = "DiagnosticSignInfo",
+      [vim.diagnostic.severity.HINT]  = "DiagnosticSignHint"
+    },
+    numhl = {
+      [vim.diagnostic.severity.ERROR] = "",
+      [vim.diagnostic.severity.WARN]  = "",
+      [vim.diagnostic.severity.INFO]  = "",
+      [vim.diagnostic.severity.HINT]  = ""
+    }
+  },
+})
 
 local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
 if not lspconfig_status_ok then
   return
 end
+
 
 require("user.plugins.lsp.handlers").setup()
 

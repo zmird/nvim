@@ -1,56 +1,6 @@
 local M = {}
 
 M.setup = function()
-
-  local icons_status_ok, icons = pcall(require, "user.icons")
-  if not icons_status_ok then
-    return
-  end
-
-  local signs = {
-    text = {
-      [vim.diagnostic.severity.ERROR] = icons.error,
-      [vim.diagnostic.severity.WARN] = icons.warningTriangle,
-      [vim.diagnostic.severity.INFO] = icons.info,
-      [vim.diagnostic.severity.HINT] = icons.lightbulb
-    },
-    texthl = {
-      [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
-      [vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
-      [vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
-      [vim.diagnostic.severity.HINT] = "DiagnosticSignHint"
-    },
-    numhl = {
-      [vim.diagnostic.severity.ERROR] = "",
-      [vim.diagnostic.severity.WARN] = "",
-      [vim.diagnostic.severity.INFO] = "",
-      [vim.diagnostic.severity.HINT] = ""
-    }
-  }
-
-  local config = {
-    -- disable virtual text
-    virtual_text = false,
-    -- show signs
-    signs = {
-      active = signs,
-    },
-    update_in_insert = true,
-    underline = true,
-    severity_sort = true,
-    float = {
-      focusable = false,
-      style = "minimal",
-      border = "rounded",
-      source = "always",
-      header = "",
-      prefix = "",
-    },
-  }
-
-  vim.diagnostic.config(config)
-
-
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
     border = "single",
   })
@@ -95,10 +45,10 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if not status_ok then
-  return
+if status_ok then
+  M.capabilities = cmp_nvim_lsp.default_capabilities()
+else
+  M.capabilities = capabilities
 end
-
-M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
 return M
